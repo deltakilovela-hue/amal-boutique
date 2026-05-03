@@ -508,6 +508,32 @@ section{
   margin-top:.8rem;font-size:.72rem;font-weight:300;
   color:rgba(255,255,255,.3);font-style:italic;
 }
+.setup-badge{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  background:var(--gold);color:var(--dark);
+  border-radius:2px;padding:1rem 1.4rem;
+  margin-bottom:1.2rem;
+}
+.setup-badge-left .label{
+  font-size:.6rem;font-weight:700;letter-spacing:.22em;
+  text-transform:uppercase;opacity:.6;display:block;margin-bottom:.2rem;
+}
+.setup-badge-left .name{
+  font-family:var(--font-serif);font-size:1.05rem;font-weight:700;line-height:1.2;
+}
+.setup-badge-right .price{
+  font-family:var(--font-serif);font-size:1.6rem;font-weight:700;line-height:1;
+  text-align:right;
+}
+.setup-badge-right .once{
+  font-size:.6rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;opacity:.55;text-align:right;display:block;
+}
+.setup-what{
+  font-size:.77rem;font-weight:300;
+  color:rgba(255,255,255,.45);
+  line-height:1.65;margin-bottom:1.2rem;
+}
 .oferta-box{
   background:rgba(201,168,76,.04);
   border:1px solid rgba(201,168,76,.25);
@@ -1261,44 +1287,61 @@ section{
 
     <!-- Oferta especial -->
     <div class="oferta-box">
-      <p class="oferta-title">Oferta especial de arranque</p>
-      <p style="font-size:.8rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:1rem;line-height:1.6">
-        Esquema progresivo para facilitar el crecimiento:
+      <p class="oferta-title">Oferta especial — contrata el plan completo</p>
+
+      <!-- Setup fee badge -->
+      <div class="setup-badge">
+        <div class="setup-badge-left">
+          <span class="label">Pago único de instalación</span>
+          <span class="name">Setup & Configuración<br>completa del sistema</span>
+        </div>
+        <div class="setup-badge-right">
+          <span class="price">$15,000</span>
+          <span class="once">MXN · una sola vez</span>
+        </div>
+      </div>
+
+      <p class="setup-what">
+        Incluye: construcción de tienda en línea, configuración del CRM, entrenamiento del Asistente IA,
+        integraciones con WhatsApp / Facebook / Instagram, perfil Google Maps y calendario editorial inicial.
+        Todo listo para operar desde el día 1.
       </p>
+
+      <p class="oferta-title" style="margin-bottom:.8rem">Esquema de pagos mensuales</p>
       <div class="oferta-steps">
         <div class="oferta-step">
           <span class="step-dot dot-green"></span>
           <div>
-            <span class="step-mes">Mes 1 — Implementación</span>
-            <span class="step-desc">Solo pagas el setup. Construimos todo el sistema desde cero.</span>
+            <span class="step-mes">1er Mes — Solo el fee de instalación</span>
+            <span class="step-desc">Pagas únicamente el setup de $15,000. Construimos todo el sistema desde cero.</span>
           </div>
         </div>
         <div class="oferta-step">
           <span class="step-dot dot-blue"></span>
           <div>
-            <span class="step-mes">Mes 2 — Activación · $3,000</span>
-            <span class="step-desc">Sistema + contenido funcionando al 100%.</span>
+            <span class="step-mes">2do Mes — Solo el Sistema · $3,000</span>
+            <span class="step-desc">Sistema operativo + contenido + tienda funcionando al 100%.</span>
           </div>
         </div>
         <div class="oferta-step">
           <span class="step-dot dot-purple"></span>
           <div>
-            <span class="step-mes">Mes 3 — Automatización · $5,000</span>
-            <span class="step-desc">Sistema + Asistente IA activo.</span>
+            <span class="step-mes">3er Mes — Sistema + Asistente · $5,000</span>
+            <span class="step-desc">Se activa el Asistente IA 24/7. Atención automática en todos los canales.</span>
           </div>
         </div>
         <div class="oferta-step">
           <span class="step-dot dot-orange"></span>
           <div>
-            <span class="step-mes">Mes 4 — Escalamiento</span>
-            <span class="step-desc">Sistema + IA (sin manejo de campañas). Empezamos a generar clientes.</span>
+            <span class="step-mes">4to Mes — Inviertes (sin manejo de campañas)</span>
+            <span class="step-desc">Sistema + IA corriendo solos. Tú decides cuánto poner en publicidad — sin costo de gestión.</span>
           </div>
         </div>
         <div class="oferta-step">
           <span class="step-dot dot-red"></span>
           <div>
-            <span class="step-mes">Mes 5 en adelante · $7,500 + pauta</span>
-            <span class="step-desc">Sistema completo operando al 100%.</span>
+            <span class="step-mes">5to Mes en adelante · $7,500 + pauta</span>
+            <span class="step-desc">Sistema completo al 100% + manejo de campañas + tu inversión en publicidad.</span>
           </div>
         </div>
       </div>
