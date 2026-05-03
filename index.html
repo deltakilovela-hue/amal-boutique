@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amal Boutique — Moda que te acompaña, estilo que te define</title>
+<meta name="description" content="Amal Boutique, Tepic. Moda femenina elegante. Envíos dentro y fuera de Tepic. WhatsApp 311 114 1193">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C9A84C;--gold-l:#E8C96A;--gold-d:#A8862E;
+  --dark:#1A1A1A;--warm:#3D2B1F;--mid:#2A1F15;
+  --beige:#F5EFE6;--beige2:#EDE3D6;
+  --white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Montserrat',system-ui,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--beige);color:var(--dark);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ──────────────────────────────────────────────────────────────── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  transition:background .3s,backdrop-filter .3s,box-shadow .3s;
+}
+header.scrolled{
+  background:rgba(26,26,26,.92);
+  backdrop-filter:blur(12px);
+  box-shadow:0 1px 0 rgba(201,168,76,.15);
+}
+nav{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2rem;
+}
+.nav-logo{
+  font-family:var(--serif);font-size:1.5rem;font-weight:700;
+  letter-spacing:.05em;color:var(--white);
+  display:flex;flex-direction:column;line-height:1;
+}
+.nav-logo span{
+  font-family:var(--sans);font-size:.5rem;font-weight:500;
+  letter-spacing:.35em;color:var(--gold);text-transform:uppercase;
+  margin-top:.25rem;
+}
+.nav-links{display:flex;align-items:center;gap:2.2rem}
+.nav-links a{
+  font-size:.7rem;font-weight:600;letter-spacing:.18em;
+  text-transform:uppercase;color:rgba(255,255,255,.65);
+  transition:color .2s;position:relative;
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:-.3rem;left:0;right:0;
+  height:1px;background:var(--gold);transform:scaleX(0);
+  transform-origin:center;transition:transform .25s var(--ease);
+}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.nav-links a.propuesta{
+  color:var(--gold);border:1px solid rgba(201,168,76,.4);
+  padding:.35rem .9rem;border-radius:2px;
+  transition:background .25s,color .25s;
+}
+.nav-links a.propuesta:hover{background:var(--gold);color:var(--dark)}
+.nav-links a.propuesta::after{display:none}
+.nav-wa{
+  display:flex;align-items:center;gap:.45rem;
+  background:rgba(37,211,102,.15);border:1px solid rgba(37,211,102,.3);
+  color:rgba(37,211,102,.9);font-size:.65rem;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:.38rem .9rem;border-radius:20px;
+  transition:background .25s;cursor:pointer;
+}
+.nav-wa:hover{background:rgba(37,211,102,.25)}
+.nav-wa svg{width:13px;height:13px;fill:currentColor}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:.3s}
+@media(max-width:768px){
+  .nav-links{
+    display:none;position:fixed;inset:0;top:0;
+    background:rgba(26,26,26,.97);flex-direction:column;
+    justify-content:center;align-items:center;gap:2rem;
+    font-size:.85rem;
+  }
+  .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .nav-wa{display:none}
+}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
+#hero{
+  min-height:100vh;background:var(--dark);
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+  padding:0 0 5rem;
+}
+.hero-bg-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+.hero-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 55% 45%,rgba(201,168,76,.07),transparent 65%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  max-width:1280px;margin:0 auto;padding:0 2rem;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;
+}
+.hero-left{padding-bottom:1rem}
+.hero-tag{
+  font-size:.6rem;font-weight:600;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1.8rem;
+}
+.hero-h1{
+  font-family:var(--serif);
+  font-size:clamp(3.5rem,8vw,7rem);
+  font-weight:700;line-height:.9;
+  letter-spacing:-.02em;color:var(--white);
+  margin-bottom:1.2rem;
+}
+.hero-h1 em{display:block;font-style:italic;color:var(--gold);font-weight:400;font-size:.7em}
+.hero-line{
+  width:60px;height:1px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  margin-bottom:1.2rem;
+}
+.hero-sub{
+  font-size:.85rem;font-weight:300;line-height:1.8;
+  color:rgba(255,255,255,.5);max-width:36ch;
+  margin-bottom:2rem;
+}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:var(--gold);color:var(--dark);
+  font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:.8rem 1.8rem;border-radius:2px;
+  transition:background .25s,transform .2s,box-shadow .25s;
+  box-shadow:0 4px 20px rgba(201,168,76,.3);
+}
+.btn-primary:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.45)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.75);
+  font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  padding:.8rem 1.8rem;border-radius:2px;
+  transition:border-color .25s,color .25s;
+}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-primary svg,.btn-ghost svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none}
+.hero-right{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+  opacity:.9;
+}
+.hero-img{border-radius:2px;overflow:hidden;position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img:nth-child(1){grid-column:1/3;height:260px}
+.hero-img:nth-child(2){height:180px}
+.hero-img:nth-child(3){height:180px}
+.hero-img::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,26,26,.3),transparent 50%);
+}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  font-size:.58rem;letter-spacing:.25em;color:rgba(255,255,255,.3);
+  text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:.5rem;
+}
+.scroll-line{width:1px;height:35px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(.7)}}
+@media(max-width:900px){
+  .hero-content{grid-template-columns:1fr}
+  .hero-right{display:none}
+}
+
+/* ── COLLECTION ──────────────────────────────────────────────────────── */
+#coleccion{
+  padding:6rem 2rem;
+  max-width:1280px;margin:0 auto;
+}
+.sec-header{text-align:center;margin-bottom:3.5rem}
+.sec-tag{
+  font-size:.6rem;font-weight:600;letter-spacing:.4em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+  display:block;
+}
+.sec-title{
+  font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:600;line-height:1.15;color:var(--dark);
+}
+.sec-title em{font-style:italic;color:var(--gold-d)}
+.sec-sub{
+  font-size:.88rem;font-weight:300;line-height:1.8;
+  color:rgba(61,43,31,.6);margin-top:.8rem;
+  max-width:50ch;margin-left:auto;margin-right:auto;
+}
+.collection-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+}
+.col-card{
+  position:relative;overflow:hidden;border-radius:2px;
+  cursor:pointer;
+  background:var(--dark);
+}
+.col-card img{
+  width:100%;aspect-ratio:3/4;object-fit:cover;
+  transition:transform .5s var(--ease),filter .5s;
+  filter:brightness(.95);
+}
+.col-card:hover img{transform:scale(1.04);filter:brightness(1)}
+.col-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(26,26,26,.85) 0%,rgba(26,26,26,.2) 50%,transparent 80%);
+  opacity:0;transition:opacity .35s;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:1.5rem;
+}
+.col-card:hover .col-card-overlay{opacity:1}
+.col-card-badge{
+  display:inline-block;background:var(--gold);color:var(--dark);
+  font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  padding:.25rem .65rem;margin-bottom:.6rem;border-radius:1px;
+  transform:translateY(10px);transition:transform .3s var(--ease) .05s;
+}
+.col-card:hover .col-card-badge{transform:translateY(0)}
+.col-card-title{
+  font-family:var(--serif);font-size:1.3rem;font-weight:600;
+  color:var(--white);line-height:1.2;
+  transform:translateY(10px);transition:transform .3s var(--ease) .1s;
+}
+.col-card:hover .col-card-title{transform:translateY(0)}
+.col-card-size{
+  font-size:.65rem;font-weight:500;letter-spacing:.12em;
+  color:rgba(255,255,255,.6);margin-top:.3rem;
+  transform:translateY(10px);transition:transform .3s var(--ease) .15s;
+}
+.col-card:hover .col-card-size{transform:translateY(0)}
+@media(max-width:900px){.collection-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.collection-grid{grid-template-columns:1fr}}
+
+/* ── WHY AMAL ─────────────────────────────────────────────────────────── */
+#nosotros{background:var(--dark);padding:7rem 2rem}
+.why-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;
+}
+.why-left .sec-tag{display:block;margin-bottom:1rem}
+.why-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4.5vw,3.5rem);
+  font-weight:600;line-height:1.15;color:var(--white);margin-bottom:1.5rem;
+}
+.why-title em{font-style:italic;color:var(--gold)}
+.why-body{
+  font-size:.88rem;font-weight:300;line-height:1.9;
+  color:rgba(255,255,255,.5);margin-bottom:2rem;
+}
+.why-stats{display:flex;gap:2rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-num{
+  font-family:var(--serif);font-size:2.5rem;font-weight:700;
+  color:var(--gold);line-height:1;
+}
+.stat-label{
+  font-size:.62rem;font-weight:500;letter-spacing:.12em;
+  text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.3rem;
+}
+.why-right{
+  display:grid;grid-template-columns:1fr 1fr;gap:1rem;
+}
+.why-img-main{grid-column:1/3;border-radius:2px;overflow:hidden}
+.why-img-main img,.why-img-sm img{width:100%;object-fit:cover;border-radius:2px}
+.why-img-main img{height:300px}
+.why-img-sm img{height:170px}
+@media(max-width:900px){
+  .why-inner{grid-template-columns:1fr}
+  .why-right{margin-top:2rem}
+}
+
+/* ── SERVICIOS ────────────────────────────────────────────────────────── */
+#servicios{padding:7rem 2rem;background:var(--beige2)}
+.srv-inner{max-width:1280px;margin:0 auto}
+.srv-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1.5rem;margin-top:3rem;
+}
+.srv-card{
+  background:var(--white);padding:2rem 1.5rem;border-radius:2px;
+  border-top:3px solid transparent;
+  transition:border-color .3s,transform .3s var(--ease),box-shadow .3s;
+  cursor:default;
+}
+.srv-card:hover{
+  border-top-color:var(--gold);
+  transform:translateY(-5px);
+  box-shadow:0 15px 35px rgba(61,43,31,.12);
+}
+.srv-icon{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(201,168,76,.1);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.2rem;
+}
+.srv-icon svg{width:20px;height:20px;stroke:var(--gold-d);stroke-width:1.5;fill:none}
+.srv-title{
+  font-family:var(--serif);font-size:1.15rem;font-weight:600;
+  color:var(--dark);margin-bottom:.5rem;
+}
+.srv-desc{
+  font-size:.82rem;font-weight:300;line-height:1.7;
+  color:rgba(61,43,31,.6);
+}
+@media(max-width:900px){.srv-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.srv-grid{grid-template-columns:1fr}}
+
+/* ── PROPUESTA BANNER ─────────────────────────────────────────────────── */
+#propuesta-banner{
+  background:var(--warm);
+  padding:5rem 2rem;
+  position:relative;overflow:hidden;
+}
+.pb-glow{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(201,168,76,.1),transparent 60%);
+  pointer-events:none;
+}
+.pb-inner{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1fr auto;
+  gap:3rem;align-items:center;position:relative;z-index:1;
+}
+.pb-eyebrow{
+  font-size:.6rem;font-weight:600;letter-spacing:.35em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:1rem;
+}
+.pb-title{
+  font-family:var(--serif);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:600;line-height:1.2;color:var(--white);
+  margin-bottom:.8rem;
+}
+.pb-sub{
+  font-size:.85rem;font-weight:300;line-height:1.7;
+  color:rgba(245,239,230,.55);max-width:45ch;
+}
+.pb-btn{
+  flex-shrink:0;
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:var(--gold);color:var(--dark);
+  font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;
+  padding:1rem 2rem;border-radius:2px;white-space:nowrap;
+  transition:background .25s,transform .2s,box-shadow .25s;
+  box-shadow:0 4px 20px rgba(201,168,76,.3);
+}
+.pb-btn:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,168,76,.45)}
+.pb-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none}
+@media(max-width:768px){
+  .pb-inner{grid-template-columns:1fr}
+  .pb-btn{width:fit-content}
+}
+
+/* ── CONTACTO ─────────────────────────────────────────────────────────── */
+#contacto{background:var(--dark);padding:7rem 2rem}
+.ct-inner{
+  max-width:900px;margin:0 auto;text-align:center;
+}
+.ct-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:600;color:var(--white);margin-bottom:.8rem;line-height:1.15;
+}
+.ct-title em{font-style:italic;color:var(--gold)}
+.ct-sub{
+  font-size:.88rem;font-weight:300;color:rgba(255,255,255,.4);
+  margin-bottom:3rem;line-height:1.8;
+}
+.ct-cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;
+  margin-bottom:3rem;
+}
+.ct-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(201,168,76,.12);
+  padding:1.8rem 1.2rem;border-radius:2px;
+  transition:background .25s,border-color .25s;
+}
+.ct-card:hover{background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.3)}
+.ct-icon{
+  width:40px;height:40px;border-radius:50%;
+  background:rgba(201,168,76,.12);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto .9rem;
+}
+.ct-icon svg{width:17px;height:17px;stroke:var(--gold);stroke-width:1.5;fill:none}
+.ct-card-title{
+  font-family:var(--serif);font-size:1rem;font-weight:600;
+  color:var(--white);margin-bottom:.4rem;
+}
+.ct-card-val{
+  font-size:.8rem;font-weight:300;color:rgba(255,255,255,.5);line-height:1.6;
+}
+.ct-wa{
+  display:inline-flex;align-items:center;gap:.7rem;
+  background:#25D366;color:var(--dark);
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  padding:.9rem 2.2rem;border-radius:2px;
+  transition:background .25s,transform .2s;
+  box-shadow:0 4px 20px rgba(37,211,102,.3);
+}
+.ct-wa:hover{background:#20ba5a;transform:translateY(-2px)}
+.ct-wa svg{width:16px;height:16px;fill:var(--dark)}
+@media(max-width:768px){.ct-cards{grid-template-columns:1fr}}
+
+/* ── FOOTER ───────────────────────────────────────────────────────────── */
+footer{
+  background:var(--mid);
+  padding:2.5rem 2rem;
+  border-top:1px solid rgba(201,168,76,.1);
+}
+.ft-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;
+}
+.ft-logo{
+  font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--white);
+}
+.ft-logo span{
+  display:block;font-family:var(--sans);font-size:.5rem;font-weight:500;
+  letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin-top:.2rem;
+}
+.ft-copy{font-size:.68rem;color:rgba(255,255,255,.25);letter-spacing:.04em}
+.ft-links{display:flex;gap:1.5rem}
+.ft-links a{font-size:.65rem;font-weight:500;letter-spacing:.1em;color:rgba(255,255,255,.35);text-transform:uppercase;transition:color .2s}
+.ft-links a:hover{color:var(--gold)}
+
+/* ── REVEAL ───────────────────────────────────────────────────────────── */
+.r{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.r.v{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+@media(prefers-reduced-motion:reduce){.r{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="header">
+  <nav>
+    <a href="/" class="nav-logo">AMAL<span>Boutique · Tepic</span></a>
+    <div class="nav-links" id="nav-links">
+      <a href="#coleccion">Colección</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="propuesta.html" class="propuesta">Propuesta DK</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <a href="https://wa.me/523111141193" target="_blank" rel="noopener" class="nav-wa" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      WhatsApp
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="hero-tag">Tepic, Nayarit · Moda Femenina</p>
+      <h1 class="hero-h1">AMAL<em>Boutique</em></h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">Comodidad que te acompaña. Estilo que te define. Moda para mujeres que brillan en cada momento.</p>
+      <div class="hero-ctas">
+        <a href="#coleccion" class="btn-primary">
+          Ver Colección
+          <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="https://wa.me/523111141193?text=Hola%2C%20me%20interesa%20ver%20los%20modelos%20disponibles" target="_blank" rel="noopener" class="btn-ghost">
+          WhatsApp
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-right" aria-hidden="true">
+      <div class="hero-img">
+        <img src="images/post5.png" alt="Amal Boutique — modelo con conjunto elegante" loading="eager">
+      </div>
+      <div class="hero-img">
+        <img src="images/post1.png" alt="Conjunto confort beige" loading="lazy">
+      </div>
+      <div class="hero-img">
+        <img src="images/post4.png" alt="Moda Amal Boutique" loading="lazy">
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    Scroll
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- COLECCIÓN -->
+<section id="coleccion" style="padding:7rem 2rem">
+  <div style="max-width:1280px;margin:0 auto">
+    <div class="sec-header r">
+      <span class="sec-tag">Colección</span>
+      <h2 class="sec-title">Piezas que <em>te definen</em></h2>
+      <p class="sec-sub">Diseños únicos, telas de calidad y el ajuste perfecto para que te sientas increíble cada día.</p>
+    </div>
+    <div class="collection-grid">
+      <div class="col-card r d1">
+        <img src="images/post1.png" alt="Conjunto Confort — Beige, Negro, Café, Azul — Tallas M G XL" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Nuevo</span>
+          <p class="col-card-title">Conjunto Confort</p>
+          <p class="col-card-size">M · G · XL — 4 colores</p>
+        </div>
+      </div>
+      <div class="col-card r d2">
+        <img src="images/post2.png" alt="Colección Elegancia — conjuntos rosa, blanco y rojo" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Destacado</span>
+          <p class="col-card-title">Colección Elegancia</p>
+          <p class="col-card-size">M · G · XL</p>
+        </div>
+      </div>
+      <div class="col-card r d3">
+        <img src="images/post3.png" alt="Vestido Animal Print — estampado vaca marrón" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Exclusivo</span>
+          <p class="col-card-title">Vestido Animal Print</p>
+          <p class="col-card-size">Talla única</p>
+        </div>
+      </div>
+      <div class="col-card r d2">
+        <img src="images/post4.png" alt="Look Urbano — blazer negro con jeans" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Disponible</span>
+          <p class="col-card-title">Look Urbano</p>
+          <p class="col-card-size">M · G · XL</p>
+        </div>
+      </div>
+      <div class="col-card r d3">
+        <img src="images/post6.png" alt="Moda Amal Boutique — ocasiones especiales" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Temporada</span>
+          <p class="col-card-title">Ocasiones Especiales</p>
+          <p class="col-card-size">M · G · XL</p>
+        </div>
+      </div>
+      <div class="col-card r d4">
+        <img src="images/tienda-online.png" alt="Próximamente tienda en línea Amal Boutique" loading="lazy">
+        <div class="col-card-overlay">
+          <span class="col-card-badge">Próximamente</span>
+          <p class="col-card-title">Tienda en Línea</p>
+          <p class="col-card-size">Disponible pronto</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem" class="r d3">
+      <a href="https://wa.me/523111141193?text=Hola%2C%20quiero%20ver%20todos%20los%20modelos%20disponibles" target="_blank" rel="noopener" class="btn-primary" style="display:inline-flex">
+        Ver todos los modelos
+        <svg viewBox="0 0 24 24" aria-hidden="true" style="width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="why-inner">
+    <div class="why-left">
+      <span class="sec-tag r">Nosotras</span>
+      <h2 class="why-title r d1">Más que una tienda.<br><em>Una experiencia.</em></h2>
+      <p class="why-body r d2">Amal Boutique nació con una misión clara: llevar moda de calidad a mujeres que saben lo que quieren. Cada pieza es seleccionada con cuidado para que te sientas única, segura y lista para cualquier ocasión — desde tu día a día hasta el momento más especial.</p>
+      <div class="why-stats r d3">
+        <div class="stat"><p class="stat-num">M·G·XL</p><p class="stat-label">Tallas disponibles</p></div>
+        <div class="stat"><p class="stat-num">24h</p><p class="stat-label">Envíos Tepic</p></div>
+        <div class="stat"><p class="stat-num">100%</p><p class="stat-label">Calidad garantizada</p></div>
+      </div>
+    </div>
+    <div class="why-right r d2">
+      <div class="why-img-main"><img src="images/post5.png" alt="Amal Boutique — moda elegante femenina" loading="lazy"></div>
+      <div class="why-img-sm"><img src="images/post2.png" alt="Colección Amal" loading="lazy"></div>
+      <div class="why-img-sm"><img src="images/post4.png" alt="Estilo Amal Boutique" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="srv-inner">
+    <div class="sec-header r">
+      <span class="sec-tag">Servicios</span>
+      <h2 class="sec-title" style="color:var(--dark)">Todo para que <em>compres fácil</em></h2>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card r d1">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3 class="srv-title">Envíos a Todo Tepic</h3>
+        <p class="srv-desc">Enviamos dentro y fuera de Tepic, Nayarit. Rápido, seguro y con seguimiento en tiempo real.</p>
+      </div>
+      <div class="srv-card r d2">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <h3 class="srv-title">Sistema de Apartado</h3>
+        <p class="srv-desc">Aparta tu pieza favorita con un depósito y recógela cuando quieras. Sin prisa, sin perderla.</p>
+      </div>
+      <div class="srv-card r d3">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <h3 class="srv-title">Transferencias y Tarjetas</h3>
+        <p class="srv-desc">Aceptamos transferencias bancarias y tarjetas de crédito/débito. Paga como prefieras.</p>
+      </div>
+      <div class="srv-card r d4">
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3 class="srv-title">Atención Personalizada</h3>
+        <p class="srv-desc">Te ayudamos a encontrar la pieza perfecta. Escríbenos por WhatsApp y te asesoramos al instante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA BANNER -->
+<section id="propuesta-banner">
+  <div class="pb-glow" aria-hidden="true"></div>
+  <div class="pb-inner">
+    <div class="r">
+      <p class="pb-eyebrow">Delta Kilo Soluciones × Amal Boutique</p>
+      <h2 class="pb-title">¿Lista para el<br>siguiente nivel digital?</h2>
+      <p class="pb-sub">Descubre cómo un sistema completo de ventas digitales puede transformar Amal Boutique en un negocio que vende las 24 horas del día.</p>
+    </div>
+    <a href="propuesta.html" class="pb-btn r d2">
+      Ver Propuesta
+      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="ct-inner">
+    <h2 class="ct-title r">Visítanos o escríbenos,<br><em>estamos para ti.</em></h2>
+    <p class="ct-sub r d1">Ven a nuestra tienda en Tepic Centro o contáctanos por WhatsApp. Respondemos en minutos.</p>
+    <div class="ct-cards">
+      <div class="ct-card r d1">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <p class="ct-card-title">Ubicación</p>
+        <p class="ct-card-val">Av. P Sánchez esquina con Zapata<br>Colonia Centro, Tepic, Nayarit</p>
+      </div>
+      <div class="ct-card r d2">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
+        </div>
+        <p class="ct-card-title">WhatsApp</p>
+        <p class="ct-card-val">311 114 1193<br>Respuesta inmediata</p>
+      </div>
+      <div class="ct-card r d3">
+        <div class="ct-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <p class="ct-card-title">Horario</p>
+        <p class="ct-card-val">Lun – Sáb: 10am – 8pm<br>Dom: 11am – 6pm</p>
+      </div>
+    </div>
+    <a href="https://wa.me/523111141193?text=Hola%20Amal%20Boutique%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" class="ct-wa r d4">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      Escribir a WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">AMAL BOUTIQUE<span>Tepic, Nayarit</span></div>
+    <p class="ft-copy">© 2025 Amal Boutique · Todos los derechos reservados</p>
+    <nav class="ft-links">
+      <a href="#coleccion">Colección</a>
+      <a href="#contacto">Contacto</a>
+      <a href="propuesta.html">Propuesta DK</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+hamburger.addEventListener('click', () => {
+  const open = navLinks.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', open);
+});
+navLinks.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  });
+});
+
+// Reveal on scroll
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('v'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.r').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
