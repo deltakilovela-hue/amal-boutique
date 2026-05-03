@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -21,6 +21,7 @@
   --beige-mid:#E8DDD0;
   --white:#FFFFFF;
   --red-soft:#C0392B;
+  --green-soft:#27AE60;
   --font-serif:'Cormorant Garamond',Georgia,serif;
   --font-sans:'Montserrat',system-ui,sans-serif;
   --ease-out:cubic-bezier(0.16,1,0.3,1);
@@ -41,7 +42,7 @@ body{
 /* ── Nav dots ─────────────────────────────────────────────────────────── */
 #nav-dots{
   position:fixed;right:1.5rem;top:50%;transform:translateY(-50%);
-  z-index:100;display:flex;flex-direction:column;gap:.6rem;
+  z-index:100;display:flex;flex-direction:column;gap:.55rem;
 }
 .dot{
   width:8px;height:8px;border-radius:50%;
@@ -88,11 +89,33 @@ section{
   min-height:100vh;display:flex;flex-direction:column;
   justify-content:center;position:relative;overflow:hidden;
 }
+.section-tag{
+  font-family:var(--font-sans);font-size:.65rem;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.5rem;
+}
+.h-title{
+  font-family:var(--font-serif);
+  font-size:clamp(2rem,5vw,3.5rem);
+  font-weight:600;line-height:1.15;
+}
+.h-subtitle{
+  font-size:.95rem;font-weight:300;
+  color:rgba(255,255,255,.45);margin-top:.8rem;
+  letter-spacing:.02em;
+}
+.gold{color:var(--gold)}
+.text-center{text-align:center}
+.section-number{
+  font-family:var(--font-serif);font-size:6rem;font-weight:700;
+  color:rgba(201,168,76,.06);position:absolute;top:2rem;right:3rem;
+  line-height:1;user-select:none;
+}
 
 /* ════════════════════════════════════════════════════════════════════════
    01 · HERO
    ════════════════════════════════════════════════════════════════════════ */
-#hero{padding-top:3rem;
+#hero{
   background:var(--dark);
   align-items:center;text-align:center;
   padding:0 2rem;
@@ -106,9 +129,7 @@ section{
   0%{opacity:.6;transform:scale(1)}
   100%{opacity:1;transform:scale(1.05)}
 }
-/* Gold particle canvas */
 #particle-canvas{position:absolute;inset:0;pointer-events:none;opacity:.5}
-
 .hero-eyebrow{
   font-family:var(--font-sans);font-size:.7rem;font-weight:600;
   letter-spacing:.4em;color:var(--gold);text-transform:uppercase;
@@ -176,17 +197,23 @@ section{
 }
 .marca-right{
   flex:.55;background:var(--dark-warm);
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  padding:4rem 3rem;position:relative;overflow:hidden;
+  position:relative;overflow:hidden;
+  min-height:400px;
+}
+.marca-right img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
 }
 .marca-right::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 50%,rgba(201,168,76,.12),transparent 65%);
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,var(--beige) 0%,transparent 25%),
+             linear-gradient(to top,rgba(61,43,31,.5) 0%,transparent 50%);
+  pointer-events:none;
 }
-.section-tag{
-  font-family:var(--font-sans);font-size:.65rem;font-weight:600;
-  letter-spacing:.35em;text-transform:uppercase;color:var(--gold);
-  margin-bottom:1.5rem;
+.marca-right::after{
+  content:'';position:absolute;inset:0;z-index:1;
+  border:1px solid rgba(201,168,76,.2);
+  pointer-events:none;
 }
 .marca-h1{
   font-family:var(--font-serif);
@@ -204,98 +231,102 @@ section{
   font-size:1rem;font-weight:300;line-height:1.8;
   color:rgba(61,43,31,.75);max-width:38ch;
 }
-.heart-pulse{
-  font-size:5rem;color:var(--gold);line-height:1;
-  animation:heartbeat 2.4s ease-in-out infinite;
-  text-shadow:0 0 30px rgba(201,168,76,.5);
-  position:relative;z-index:1;
+.marca-checks{display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
+.marca-check{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.88rem;font-weight:500;color:var(--dark-warm);
 }
-@keyframes heartbeat{
-  0%,100%{transform:scale(1)}
-  14%{transform:scale(1.15)}
-  28%{transform:scale(1)}
-  42%{transform:scale(1.08)}
-  56%{transform:scale(1)}
+.marca-check-dot{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
 }
-.marca-quote{
-  font-family:var(--font-serif);font-style:italic;
-  font-size:clamp(1rem,2vw,1.3rem);font-weight:300;
-  color:rgba(245,239,230,.7);text-align:center;
-  line-height:1.7;margin-top:1.5rem;
-  position:relative;z-index:1;
-}
+.marca-check-dot svg{width:11px;height:11px;stroke:var(--dark);stroke-width:3}
 @media(max-width:768px){
   #marca{flex-direction:column}
-  .marca-right{min-height:40vh;flex:none}
+  .marca-right{min-height:280px;flex:none}
+  .marca-right::before{background:linear-gradient(to bottom,var(--beige) 0%,transparent 35%)}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
-   03 · EL PROBLEMA
+   03 · OBJETIVO + SITUACIÓN ACTUAL
    ════════════════════════════════════════════════════════════════════════ */
-#problema{
+#objetivo{
   background:var(--dark);
   padding:6rem clamp(1.5rem,8vw,8rem);
 }
-.section-number{
-  font-family:var(--font-serif);font-size:6rem;font-weight:700;
-  color:rgba(201,168,76,.08);position:absolute;top:2rem;right:3rem;
-  line-height:1;user-select:none;
+.obj-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:start;margin-top:2rem;
 }
-.problema-header{margin-bottom:3.5rem}
-.problema-header .section-tag{color:rgba(192,57,43,.8)}
-.h-title{
-  font-family:var(--font-serif);
-  font-size:clamp(2rem,5vw,3.5rem);
-  font-weight:600;line-height:1.15;
+.obj-bullets{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-top:1.2rem}
+.obj-bullet{
+  display:flex;align-items:center;gap:1rem;
+  padding:.75rem 1rem;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(201,168,76,.12);
+  border-radius:2px;
+  font-size:.88rem;font-weight:300;
+  color:rgba(255,255,255,.65);
 }
-.h-subtitle{
-  font-size:.95rem;font-weight:300;
-  color:rgba(255,255,255,.45);margin-top:.8rem;
-  letter-spacing:.02em;
+.obj-bullet-num{
+  width:26px;height:26px;border-radius:50%;
+  background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.35);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-serif);font-size:.85rem;font-weight:700;color:var(--gold);
 }
-.pain-list{display:flex;flex-direction:column;gap:1rem;max-width:680px}
+.pain-list{display:flex;flex-direction:column;gap:.85rem}
 .pain-item{
   display:flex;align-items:center;gap:1.2rem;
-  padding:1.1rem 1.5rem;
+  padding:1rem 1.4rem;
   background:rgba(255,255,255,.03);
   border:1px solid rgba(255,255,255,.06);
   border-left:3px solid rgba(192,57,43,.0);
   border-radius:2px;
-  transition:border-left-color .4s,background .4s;
   opacity:0;transform:translateX(-30px);
   transition:opacity .6s var(--ease-out),transform .6s var(--ease-out),border-left-color .4s,background .4s;
 }
 .pain-item.visible{opacity:1;transform:translateX(0)}
-.pain-item.lit{
-  border-left-color:rgba(192,57,43,.7);
-  background:rgba(192,57,43,.06);
-}
+.pain-item.lit{border-left-color:rgba(192,57,43,.7);background:rgba(192,57,43,.06)}
 .pain-icon{
   width:28px;height:28px;border-radius:50%;
   background:rgba(192,57,43,.15);border:1px solid rgba(192,57,43,.3);
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
 }
 .pain-icon svg{width:13px;height:13px;stroke:rgba(192,57,43,.9);stroke-width:2.5}
-.pain-text{font-size:.9rem;font-weight:400;color:rgba(255,255,255,.7);line-height:1.5}
+.pain-text{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.7);line-height:1.5}
+.resultado-box{
+  margin-top:1.5rem;
+  padding:1rem 1.4rem;
+  background:rgba(192,57,43,.08);
+  border:1px solid rgba(192,57,43,.25);
+  border-radius:2px;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:1.1rem;color:rgba(255,100,80,.8);
+}
+@media(max-width:768px){.obj-grid{grid-template-columns:1fr}}
 
 /* ════════════════════════════════════════════════════════════════════════
-   04 · LA OPORTUNIDAD
+   04 · LA TRANSFORMACIÓN
    ════════════════════════════════════════════════════════════════════════ */
-#oportunidad{
+#transformacion{
   background:var(--beige);color:var(--dark);
   padding:6rem clamp(1.5rem,8vw,8rem);
 }
-.opor-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;
+.transform-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:4rem;align-items:center;
 }
-.check-list{display:flex;flex-direction:column;gap:1.4rem;margin-top:2rem}
+.check-list{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
 .check-item{
   display:flex;align-items:center;gap:1rem;
   padding:.9rem 1.3rem;
   background:rgba(61,43,31,.05);
   border:1px solid rgba(201,168,76,.2);
   border-radius:2px;
+  transition:transform .2s,box-shadow .2s;
 }
+.check-item:hover{transform:translateX(4px)}
 .check-icon{
   width:32px;height:32px;border-radius:50%;
   background:var(--gold);
@@ -303,197 +334,307 @@ section{
 }
 .check-icon svg{width:14px;height:14px;stroke:var(--dark);stroke-width:3}
 .check-text{font-size:.9rem;font-weight:500;color:var(--dark-warm)}
-.opor-right{display:flex;flex-direction:column;justify-content:center;padding-left:2rem}
-.opor-big{
-  font-family:var(--font-serif);font-size:clamp(1.8rem,4vw,3rem);
+.transform-right{display:flex;flex-direction:column;justify-content:center}
+.transform-big{
+  font-family:var(--font-serif);
+  font-size:clamp(1.8rem,4vw,3rem);
   font-weight:700;line-height:1.2;color:var(--dark);
   margin-bottom:1.5rem;
 }
-.opor-accent{color:var(--gold-dark)}
-.opor-pill{
+.transform-big span{color:var(--gold-dark)}
+.transform-pill{
   display:inline-block;
   background:var(--dark-warm);color:var(--gold);
   font-family:var(--font-serif);font-style:italic;
-  font-size:clamp(1rem,2vw,1.3rem);
+  font-size:clamp(.95rem,2vw,1.2rem);
   padding:.9rem 1.8rem;border-radius:2px;
-  line-height:1.5;
+  line-height:1.6;
 }
 @media(max-width:768px){
-  .opor-grid{grid-template-columns:1fr}
-  .opor-right{padding-left:0}
+  .transform-grid{grid-template-columns:1fr}
+  .transform-right{margin-top:2rem}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
-   05 · EL SISTEMA
+   05–07 · MODULE SECTIONS
    ════════════════════════════════════════════════════════════════════════ */
-#sistema{
-  background:var(--dark-warm);
-  padding:6rem clamp(1.5rem,6vw,6rem);
+.module-section{
+  flex-direction:row;padding:0;min-height:100vh;
 }
-.sistema-intro{text-align:center;margin-bottom:4rem}
-.sistema-intro .h-title{color:var(--white)}
-.sistema-intro .h-subtitle{color:rgba(245,239,230,.5)}
-.cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1.5rem;
+#modulo1{background:var(--dark-warm)}
+#modulo2{background:var(--dark)}
+#modulo3{background:var(--dark-warm)}
+
+.module-left{
+  flex:1.2;display:flex;flex-direction:column;justify-content:center;
+  padding:5rem clamp(2rem,6vw,6rem);
+  position:relative;z-index:1;
 }
-.sys-card{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(201,168,76,.15);
-  border-top:3px solid var(--gold);
-  padding:2rem 1.5rem;
-  border-radius:2px;
-  transition:transform .3s var(--ease-out),background .3s,box-shadow .3s;
-  cursor:default;
+.module-right{
+  flex:.8;position:relative;overflow:hidden;min-height:400px;
 }
-.sys-card:hover{
-  transform:translateY(-6px);
-  background:rgba(255,255,255,.08);
-  box-shadow:0 20px 40px rgba(0,0,0,.4);
+.module-right img{
+  width:100%;height:100%;object-fit:cover;display:block;
 }
-.card-num{
-  font-family:var(--font-serif);font-size:2.5rem;font-weight:700;
-  color:rgba(201,168,76,.2);line-height:1;margin-bottom:.8rem;
+#modulo1 .module-right::before,
+#modulo3 .module-right::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,var(--dark-warm) 0%,transparent 40%);
+  pointer-events:none;
 }
-.card-icon{margin-bottom:1rem}
-.card-icon svg{width:28px;height:28px;stroke:var(--gold);stroke-width:1.5;fill:none}
-.card-title{
-  font-family:var(--font-serif);font-size:1.3rem;font-weight:600;
-  color:var(--white);margin-bottom:.7rem;line-height:1.2;
+#modulo2 .module-right::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to right,var(--dark) 0%,transparent 40%);
+  pointer-events:none;
 }
-.card-desc{
-  font-size:.82rem;font-weight:300;line-height:1.7;
-  color:rgba(245,239,230,.55);
+.module-num{
+  font-family:var(--font-sans);font-size:.62rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;
+  color:rgba(201,168,76,.5);margin-bottom:.8rem;
 }
-.card-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
-.tag{
-  font-size:.65rem;font-weight:600;letter-spacing:.08em;
-  text-transform:uppercase;color:var(--gold);
-  border:1px solid rgba(201,168,76,.3);
-  padding:.2rem .6rem;border-radius:1px;
+.module-title{
+  font-family:var(--font-serif);
+  font-size:clamp(1.8rem,4vw,3rem);
+  font-weight:600;line-height:1.15;
+  color:var(--white);margin-bottom:.5rem;
+}
+.module-subtitle{
+  font-size:.9rem;font-weight:300;
+  color:rgba(245,239,230,.5);margin-bottom:1.8rem;
+}
+.module-price{
+  display:inline-flex;align-items:baseline;gap:.5rem;
+  background:var(--gold);color:var(--dark);
+  padding:.45rem 1.2rem;border-radius:2px;
+  margin-bottom:1.8rem;
+}
+.module-price .amount{
+  font-family:var(--font-serif);font-size:1.6rem;font-weight:700;line-height:1;
+}
+.module-price .period{
+  font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+}
+.module-includes{
+  list-style:none;display:flex;flex-direction:column;gap:.55rem;
+  margin-bottom:1.8rem;
+}
+.module-includes li{
+  display:flex;align-items:center;gap:.8rem;
+  font-size:.87rem;font-weight:300;
+  color:rgba(245,239,230,.72);line-height:1.4;
+}
+.module-includes li::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--gold);flex-shrink:0;
+}
+.module-resultado{
+  font-family:var(--font-serif);font-style:italic;
+  font-size:.95rem;color:var(--gold);
+  border-left:2px solid var(--gold);
+  padding-left:1rem;line-height:1.6;
+}
+.module-extra{
+  margin-top:1rem;
+  font-size:.82rem;font-weight:300;
+  color:rgba(245,239,230,.45);
+  line-height:1.6;
+}
+@media(max-width:768px){
+  .module-section{flex-direction:column}
+  .module-right{min-height:240px;flex:none}
+  #modulo1 .module-right::before,
+  #modulo3 .module-right::before,
+  #modulo2 .module-right::before{
+    background:linear-gradient(to bottom,var(--dark-warm) 0%,transparent 35%);
+  }
+  #modulo2 .module-right::before{background:linear-gradient(to bottom,var(--dark) 0%,transparent 35%)}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
-   06 · MÓDULOS
+   08 · INVERSIÓN
    ════════════════════════════════════════════════════════════════════════ */
-#modulos{
+#inversion{
   background:var(--dark);
   padding:6rem clamp(1.5rem,8vw,8rem);
+  align-items:center;text-align:center;
 }
-.modulos-intro{text-align:center;margin-bottom:4.5rem}
-.timeline{position:relative;max-width:700px;margin:0 auto}
-.timeline::before{
-  content:'';position:absolute;left:24px;top:0;bottom:0;width:1px;
-  background:linear-gradient(to bottom,transparent,var(--gold) 10%,var(--gold) 90%,transparent);
-  transform:scaleY(0);transform-origin:top;
-  transition:transform 1.2s var(--ease-out);
+.inversion-eyebrow{
+  font-size:.65rem;font-weight:600;letter-spacing:.35em;
+  text-transform:uppercase;color:rgba(201,168,76,.6);
+  margin-bottom:1.5rem;
 }
-.timeline.visible::before{transform:scaleY(1)}
-.tl-item{
-  display:flex;gap:2rem;margin-bottom:3rem;position:relative;
+.inversion-title{
+  font-family:var(--font-serif);
+  font-size:clamp(2rem,6vw,4.5rem);
+  font-weight:600;line-height:1.1;margin-bottom:.8rem;
 }
-.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;flex-shrink:0}
-.tl-dot{
-  width:48px;height:48px;border-radius:50%;
-  background:rgba(201,168,76,.1);border:2px solid rgba(201,168,76,.3);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-  transition:background .4s,border-color .4s;
+.inversion-title em{color:var(--gold);font-style:italic}
+.inversion-sub{
+  font-size:.9rem;font-weight:300;
+  color:rgba(255,255,255,.4);margin-bottom:3rem;
+  letter-spacing:.04em;
 }
-.tl-dot svg{width:20px;height:20px;stroke:var(--gold);stroke-width:1.5;fill:none}
-.tl-item.visible .tl-dot{
-  background:rgba(201,168,76,.2);
-  border-color:var(--gold);
+.inv-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:3rem;align-items:start;max-width:900px;width:100%;text-align:left;
 }
-.tl-content{padding-top:.6rem}
-.tl-title{
-  font-family:var(--font-serif);font-size:1.4rem;font-weight:600;
-  color:var(--white);margin-bottom:.4rem;
+.price-table{
+  width:100%;border-collapse:collapse;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(201,168,76,.2);border-radius:2px;overflow:hidden;
 }
-.tl-desc{
-  font-size:.85rem;font-weight:300;line-height:1.75;
-  color:rgba(255,255,255,.5);
+.price-table thead td{
+  padding:.7rem 1.2rem;
+  font-size:.6rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);background:rgba(201,168,76,.08);
+  border-bottom:1px solid rgba(201,168,76,.18);
 }
-.tl-badge{
-  display:inline-block;margin-top:.7rem;
-  font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--gold);border:1px solid rgba(201,168,76,.35);
-  padding:.2rem .7rem;border-radius:1px;
+.price-table tbody tr td{
+  padding:.8rem 1.2rem;
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+.price-table tbody tr:last-child td{border-bottom:none}
+.price-table .concept{font-size:.85rem;font-weight:300;color:rgba(255,255,255,.6)}
+.price-table .amount-cell{text-align:right;font-size:.9rem;font-weight:500;color:var(--white)}
+.price-table tfoot td{
+  padding:.9rem 1.2rem;
+  background:rgba(201,168,76,.1);
+  border-top:1px solid rgba(201,168,76,.3);
+  font-weight:700;color:var(--gold);
+}
+.price-table tfoot .total-label{font-size:.88rem}
+.price-table tfoot .total-amount{text-align:right;font-size:1.1rem}
+.price-note{
+  margin-top:.8rem;font-size:.72rem;font-weight:300;
+  color:rgba(255,255,255,.3);font-style:italic;
+}
+.oferta-box{
+  background:rgba(201,168,76,.04);
+  border:1px solid rgba(201,168,76,.25);
+  border-radius:2px;padding:1.5rem 1.5rem;
+}
+.oferta-title{
+  font-family:var(--font-sans);font-size:.62rem;font-weight:700;
+  letter-spacing:.3em;text-transform:uppercase;color:var(--gold);
+  margin-bottom:1.2rem;
+}
+.oferta-steps{display:flex;flex-direction:column;gap:.6rem}
+.oferta-step{
+  display:flex;align-items:flex-start;gap:.8rem;
+  padding:.65rem .8rem;
+  border-radius:2px;background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.05);
+}
+.step-dot{
+  width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:.3rem;
+}
+.dot-green{background:#27AE60}
+.dot-blue{background:#2980B9}
+.dot-purple{background:#8E44AD}
+.dot-orange{background:#E67E22}
+.dot-red{background:#C0392B}
+.step-mes{
+  font-size:.6rem;font-weight:700;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--gold);display:block;
+}
+.step-desc{
+  font-size:.8rem;font-weight:300;
+  color:rgba(255,255,255,.55);line-height:1.5;
+}
+@media(max-width:768px){
+  .inv-layout{grid-template-columns:1fr}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
-   07 · CÓMO FUNCIONA
+   09 · PROYECCIÓN
    ════════════════════════════════════════════════════════════════════════ */
-#flujo{
-  background:var(--beige);color:var(--dark);
+#proyeccion{
+  background:var(--dark-warm);
   padding:6rem clamp(1.5rem,8vw,8rem);
+  align-items:center;text-align:center;
 }
-.flujo-intro{margin-bottom:4rem}
-.flujo-intro .h-title{color:var(--dark)}
-.steps-wrap{
-  display:flex;flex-wrap:wrap;gap:0;position:relative;
+.proyeccion-grid{
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;gap:2rem;
+  max-width:760px;width:100%;margin:3rem auto;
 }
-.step-item{
-  flex:1;min-width:140px;position:relative;
-  padding:2rem 1.5rem 2rem 1rem;
-  text-align:center;
+.proyeccion-card{
+  padding:2.2rem 1.8rem;border-radius:2px;
+  text-align:left;
 }
-.step-item::after{
-  content:'';position:absolute;
-  top:2.4rem;right:-1px;
-  width:2px;height:40px;
-  background:linear-gradient(to bottom,var(--gold-dark),var(--gold));
-  transform:scaleY(0);transform-origin:top;
-  transition:transform .4s var(--ease-out);
+.proyeccion-card.before{
+  background:rgba(0,0,0,.25);
+  border:1px solid rgba(255,255,255,.08);
 }
-.step-item.connected::after{transform:scaleY(1)}
-.step-item:last-child::after{display:none}
-.step-num{
-  width:52px;height:52px;border-radius:50%;
-  background:rgba(61,43,31,.08);border:2px solid rgba(201,168,76,.25);
-  margin:0 auto .9rem;
+.proyeccion-card.after{
+  background:rgba(201,168,76,.08);
+  border:1px solid rgba(201,168,76,.3);
+}
+.proy-label{
+  font-size:.6rem;font-weight:700;letter-spacing:.25em;
+  text-transform:uppercase;margin-bottom:.8rem;
+}
+.proyeccion-card.before .proy-label{color:rgba(255,255,255,.3)}
+.proyeccion-card.after .proy-label{color:var(--gold)}
+.proy-amount{
+  font-family:var(--font-serif);
+  font-size:clamp(1.8rem,4vw,2.6rem);
+  font-weight:700;line-height:1.1;
+}
+.proyeccion-card.before .proy-amount{color:rgba(255,255,255,.55)}
+.proyeccion-card.after .proy-amount{color:var(--gold)}
+.proy-detail{
+  font-size:.77rem;font-weight:300;margin-top:.6rem;line-height:1.7;
+}
+.proyeccion-card.before .proy-detail{color:rgba(255,255,255,.3)}
+.proyeccion-card.after .proy-detail{color:rgba(201,168,76,.6)}
+.proy-arrow{
+  font-size:2.5rem;color:var(--gold);
   display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-serif);font-size:1.1rem;font-weight:700;color:var(--dark);
-  transition:background .4s,border-color .4s,box-shadow .4s;
 }
-.step-item.lit .step-num{
-  background:var(--gold);border-color:var(--gold);color:var(--dark);
-  box-shadow:0 4px 20px rgba(201,168,76,.35);
+.proyeccion-diff{
+  margin-top:1.5rem;
+  display:inline-block;
+  background:var(--gold);color:var(--dark);
+  font-family:var(--font-serif);font-size:1.05rem;font-weight:700;
+  padding:.6rem 2rem;border-radius:2px;
 }
-.step-label{
-  font-size:.8rem;font-weight:600;letter-spacing:.04em;
-  color:var(--dark-warm);line-height:1.4;
+.proyeccion-meaning{
+  max-width:540px;margin:2.5rem auto 0;
+  display:flex;flex-direction:column;gap:.8rem;
 }
-.step-sub{
-  font-size:.72rem;font-weight:300;color:rgba(61,43,31,.5);
-  margin-top:.3rem;line-height:1.4;
+.meaning-item{
+  display:flex;align-items:center;gap:.8rem;
+  padding:.7rem 1rem;
+  background:rgba(0,0,0,.2);border:1px solid rgba(201,168,76,.12);
+  border-radius:2px;text-align:left;
 }
-.flujo-cta{
-  margin-top:3rem;
-  font-family:var(--font-serif);font-style:italic;
-  font-size:clamp(1.1rem,2.5vw,1.5rem);
-  color:var(--dark-warm);
-  border-left:3px solid var(--gold);
-  padding-left:1.5rem;
-  max-width:55ch;
+.meaning-icon{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.meaning-icon svg{width:13px;height:13px;stroke:var(--gold);stroke-width:2;fill:none}
+.meaning-text{font-size:.83rem;font-weight:300;color:rgba(245,239,230,.65)}
+@media(max-width:600px){
+  .proyeccion-grid{grid-template-columns:1fr}
+  .proy-arrow{transform:rotate(90deg)}
 }
 
 /* ════════════════════════════════════════════════════════════════════════
-   08 · PLAN
+   10 · PLAN
    ════════════════════════════════════════════════════════════════════════ */
 #plan{
-  background:var(--dark-warm);
+  background:var(--dark);
   padding:6rem clamp(1.5rem,8vw,8rem);
 }
 .plan-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1.5rem;
-  margin-top:3rem;
+  gap:1.5rem;margin-top:3rem;
 }
 .phase-card{
-  padding:2.5rem 2rem;
-  border-radius:2px;
+  padding:2.5rem 2rem;border-radius:2px;
   position:relative;overflow:hidden;
 }
 .phase-card::before{
@@ -506,8 +647,7 @@ section{
 .phase-3{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
 .phase-3::before{background:rgba(255,255,255,.3)}
 .phase-label{
-  font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
-  margin-bottom:.6rem;
+  font-size:.65rem;font-weight:700;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.6rem;
 }
 .phase-1 .phase-label,.phase-3 .phase-label{color:var(--gold)}
 .phase-2 .phase-label{color:rgba(61,43,31,.6)}
@@ -524,71 +664,98 @@ section{
 }
 .phase-items li::before{content:'—';position:absolute;left:0}
 .phase-1 .phase-items li,.phase-3 .phase-items li{color:rgba(245,239,230,.6)}
-.phase-items li::before,.phase-1 .phase-items li::before,.phase-3 .phase-items li::before{color:var(--gold)}
+.phase-items li::before,.phase-1 .phase-items li::before,
+.phase-3 .phase-items li::before{color:var(--gold)}
 .phase-2 .phase-items li{color:rgba(61,43,31,.75)}
 .phase-2 .phase-items li::before{color:rgba(61,43,31,.4)}
 
 /* ════════════════════════════════════════════════════════════════════════
-   09 · INVERSIÓN
+   11 · CIERRE
    ════════════════════════════════════════════════════════════════════════ */
-#inversion{
+#cierre{
   background:var(--dark);
-  padding:6rem clamp(1.5rem,8vw,8rem);
-  text-align:center;
-  align-items:center;
+  align-items:center;text-align:center;
+  padding:4rem 2rem;position:relative;overflow:hidden;
 }
-.inversion-eyebrow{
-  font-size:.65rem;font-weight:600;letter-spacing:.35em;
-  text-transform:uppercase;color:rgba(201,168,76,.6);
-  margin-bottom:1.5rem;
+.cierre-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 90% 70% at 50% 50%,rgba(201,168,76,.06),transparent 65%);
+  animation:heroGlow 5s ease-in-out infinite alternate;
 }
-.inversion-title{
+.cierre-img-bg{
+  position:absolute;inset:0;
+  background-image:url('images/post4.png');
+  background-size:cover;background-position:center;
+  opacity:.07;
+}
+#cierre-canvas{position:absolute;inset:0;pointer-events:none;opacity:.35}
+.cierre-checks{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;
+  margin-bottom:2.5rem;position:relative;z-index:1;
+}
+.cierre-check-badge{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);
+  color:var(--gold);font-size:.72rem;font-weight:600;
+  letter-spacing:.08em;padding:.4rem .9rem;border-radius:20px;
+}
+.cierre-line1{
   font-family:var(--font-serif);
-  font-size:clamp(2rem,6vw,4.5rem);
+  font-size:clamp(2.2rem,7vw,6rem);
   font-weight:600;line-height:1.1;
-  margin-bottom:.8rem;
+  color:var(--white);position:relative;z-index:1;
 }
-.inversion-title em{color:var(--gold);font-style:italic}
-.inversion-sub{
-  font-size:.9rem;font-weight:300;
-  color:rgba(255,255,255,.4);margin-bottom:3.5rem;
-  letter-spacing:.04em;
+.cierre-divider{
+  width:80px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:1.5rem auto;
 }
-.price-card{
-  max-width:480px;width:100%;
-  border:1px solid rgba(201,168,76,.3);
-  border-radius:3px;
-  padding:3rem 2.5rem;
-  position:relative;
-  background:rgba(201,168,76,.04);
-  animation:borderGlow 3s ease-in-out infinite;
+.cierre-line2{
+  font-family:var(--font-serif);font-style:italic;
+  font-size:clamp(1.5rem,5vw,3.8rem);font-weight:400;
+  color:var(--gold);position:relative;z-index:1;line-height:1.2;
 }
-@keyframes borderGlow{
-  0%,100%{box-shadow:0 0 15px rgba(201,168,76,.1),0 0 0 1px rgba(201,168,76,.15)}
-  50%{box-shadow:0 0 35px rgba(201,168,76,.25),0 0 0 1px rgba(201,168,76,.35)}
+.cierre-promise{
+  margin-top:1.5rem;position:relative;z-index:1;
+  font-family:var(--font-serif);
+  font-size:clamp(1rem,2.5vw,1.5rem);
+  color:rgba(245,239,230,.5);
+  font-style:italic;
 }
-.price-label{
-  font-family:var(--font-sans);font-size:.65rem;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;
+.cierre-contact{
+  margin-top:3.5rem;
+  display:flex;flex-direction:column;gap:.6rem;
+  position:relative;z-index:1;
 }
-.price-main{
-  font-family:var(--font-serif);font-size:clamp(1.8rem,5vw,3rem);
-  font-weight:600;line-height:1.2;color:var(--white);
-  margin-bottom:1rem;
+.cierre-contact-title{
+  font-size:.6rem;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.4rem;
 }
-.price-detail{
-  font-size:.82rem;font-weight:300;
-  color:rgba(255,255,255,.4);line-height:1.7;
-  margin-bottom:2rem;
+.contact-row{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  font-size:.85rem;font-weight:300;color:rgba(255,255,255,.6);
 }
+.contact-row svg{width:14px;height:14px;stroke:var(--gold);stroke-width:1.5;flex-shrink:0}
+.cierre-logo{
+  margin-top:3rem;
+  font-family:var(--font-sans);font-size:.65rem;font-weight:600;
+  letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.2);
+}
+.cierre-logo span{color:var(--gold)}
+.cierre-tagline{
+  margin-top:.5rem;
+  font-family:var(--font-serif);font-style:italic;
+  font-size:.9rem;color:rgba(255,255,255,.25);
+}
+
+/* ── CTA button ───────────────────────────────────────────────────────── */
 .cta-btn{
   display:inline-flex;align-items:center;gap:.7rem;
   background:var(--gold);color:var(--dark);
   font-family:var(--font-sans);font-size:.8rem;font-weight:700;
   letter-spacing:.15em;text-transform:uppercase;
   padding:.9rem 2.2rem;border-radius:2px;
-  border:none;cursor:pointer;
-  text-decoration:none;
+  border:none;cursor:pointer;text-decoration:none;
   transition:background .25s,transform .2s,box-shadow .25s;
   box-shadow:0 4px 20px rgba(201,168,76,.3);
 }
@@ -599,79 +766,6 @@ section{
 }
 .cta-btn svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;transition:transform .2s}
 .cta-btn:hover svg{transform:translateX(3px)}
-.inversion-note{
-  margin-top:2rem;
-  font-size:.75rem;font-weight:300;
-  color:rgba(255,255,255,.25);
-  font-style:italic;
-}
-
-/* ════════════════════════════════════════════════════════════════════════
-   10 · CIERRE
-   ════════════════════════════════════════════════════════════════════════ */
-#cierre{
-  background:var(--dark);
-  align-items:center;text-align:center;
-  padding:4rem 2rem;
-  position:relative;overflow:hidden;
-}
-.cierre-bg{
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 90% 70% at 50% 50%,rgba(201,168,76,.06),transparent 65%);
-  animation:heroGlow 5s ease-in-out infinite alternate;
-}
-#cierre-canvas{position:absolute;inset:0;pointer-events:none;opacity:.35}
-.cierre-line1{
-  font-family:var(--font-serif);
-  font-size:clamp(2.2rem,7vw,6rem);
-  font-weight:600;line-height:1.1;
-  color:var(--white);
-  position:relative;z-index:1;
-}
-.cierre-divider{
-  width:80px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold),transparent);
-  margin:1.5rem auto;
-}
-.cierre-line2{
-  font-family:var(--font-serif);font-style:italic;
-  font-size:clamp(1.5rem,5vw,3.8rem);
-  font-weight:400;
-  color:var(--gold);
-  position:relative;z-index:1;
-  line-height:1.2;
-}
-.cierre-contact{
-  margin-top:3.5rem;
-  display:flex;flex-direction:column;gap:.6rem;
-  position:relative;z-index:1;
-}
-.cierre-contact-title{
-  font-size:.6rem;font-weight:600;letter-spacing:.3em;
-  text-transform:uppercase;color:rgba(255,255,255,.3);
-  margin-bottom:.4rem;
-}
-.contact-row{
-  display:flex;align-items:center;justify-content:center;gap:.6rem;
-  font-size:.85rem;font-weight:300;color:rgba(255,255,255,.6);
-}
-.contact-row svg{width:14px;height:14px;stroke:var(--gold);stroke-width:1.5;flex-shrink:0}
-.cierre-logo{
-  margin-top:3rem;
-  font-family:var(--font-sans);font-size:.65rem;font-weight:600;
-  letter-spacing:.35em;text-transform:uppercase;
-  color:rgba(255,255,255,.2);
-}
-.cierre-logo span{color:var(--gold)}
-.cierre-tagline{
-  margin-top:.5rem;
-  font-family:var(--font-serif);font-style:italic;
-  font-size:.9rem;color:rgba(255,255,255,.25);
-}
-
-/* ── Utility ──────────────────────────────────────────────────────────── */
-.gold{color:var(--gold)}
-.text-center{text-align:center}
 
 /* ── Top nav ──────────────────────────────────────────────────────────── */
 #back-nav{
@@ -684,8 +778,7 @@ section{
 }
 .back-brand{
   font-family:'Cormorant Garamond',Georgia,serif;
-  font-size:1rem;font-weight:700;letter-spacing:.05em;
-  color:var(--white);
+  font-size:1rem;font-weight:700;letter-spacing:.05em;color:var(--white);
 }
 .back-brand span{
   font-family:'Montserrat',system-ui,sans-serif;
@@ -704,6 +797,7 @@ section{
 }
 .tienda-nav-btn:hover{background:var(--gold-light);transform:translateY(-1px)}
 .tienda-nav-btn svg{width:13px;height:13px;stroke:currentColor;stroke-width:2.5;fill:none}
+
 /* ── Floating store button ────────────────────────────────────────────── */
 #tienda-float{
   position:fixed;bottom:2rem;right:2rem;z-index:400;
@@ -729,9 +823,11 @@ section{
 }
 @media(max-width:480px){
   #tienda-float{bottom:1.2rem;right:1.2rem;font-size:.62rem;padding:.65rem 1.1rem}
-}</style>
+}
+</style>
 </head>
 <body>
+
 <!-- Top nav -->
 <nav id="back-nav" role="navigation" aria-label="Navegación principal">
   <div class="back-brand">AMAL BOUTIQUE<span>× Delta Kilo Soluciones</span></div>
@@ -747,23 +843,24 @@ section{
   Visitar Tienda
 </a>
 
-
 <!-- Progress bar -->
 <div id="progress"></div>
 
 <!-- Nav dots -->
 <nav id="nav-dots" aria-label="Navegación de secciones">
-  <div class="dot active" data-section="0" data-label="Inicio" role="button" tabindex="0" aria-label="Inicio"></div>
-  <div class="dot" data-section="1" data-label="La Marca" role="button" tabindex="0" aria-label="La Marca"></div>
-  <div class="dot" data-section="2" data-label="El Problema" role="button" tabindex="0" aria-label="El Problema"></div>
-  <div class="dot" data-section="3" data-label="Oportunidad" role="button" tabindex="0" aria-label="Oportunidad"></div>
-  <div class="dot" data-section="4" data-label="El Sistema" role="button" tabindex="0" aria-label="El Sistema"></div>
-  <div class="dot" data-section="5" data-label="Módulos" role="button" tabindex="0" aria-label="Módulos"></div>
-  <div class="dot" data-section="6" data-label="Cómo Funciona" role="button" tabindex="0" aria-label="Cómo Funciona"></div>
-  <div class="dot" data-section="7" data-label="Plan" role="button" tabindex="0" aria-label="Plan"></div>
-  <div class="dot" data-section="8" data-label="Inversión" role="button" tabindex="0" aria-label="Inversión"></div>
-  <div class="dot" data-section="9" data-label="Cierre" role="button" tabindex="0" aria-label="Cierre"></div>
+  <div class="dot active" data-section="0"  data-label="Inicio"        role="button" tabindex="0"></div>
+  <div class="dot"        data-section="1"  data-label="La Marca"      role="button" tabindex="0"></div>
+  <div class="dot"        data-section="2"  data-label="Situación"     role="button" tabindex="0"></div>
+  <div class="dot"        data-section="3"  data-label="Transformación" role="button" tabindex="0"></div>
+  <div class="dot"        data-section="4"  data-label="Sistema"       role="button" tabindex="0"></div>
+  <div class="dot"        data-section="5"  data-label="Asistente IA"  role="button" tabindex="0"></div>
+  <div class="dot"        data-section="6"  data-label="Publicidad"    role="button" tabindex="0"></div>
+  <div class="dot"        data-section="7"  data-label="Inversión"     role="button" tabindex="0"></div>
+  <div class="dot"        data-section="8"  data-label="Proyección"    role="button" tabindex="0"></div>
+  <div class="dot"        data-section="9"  data-label="Plan"          role="button" tabindex="0"></div>
+  <div class="dot"        data-section="10" data-label="Cierre"        role="button" tabindex="0"></div>
 </nav>
+
 
 <!-- ══════════════════════════════════════════════════════════════════════
      01 · HERO
@@ -773,11 +870,11 @@ section{
   <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <div style="position:relative;z-index:1;">
-    <p class="hero-eyebrow">Propuesta de Transformación Digital</p>
+    <p class="hero-eyebrow">Propuesta Integral de Transformación Digital</p>
     <h1 class="hero-title" id="hero-title" aria-label="Amal Boutique"></h1>
     <div class="hero-divider"></div>
     <p class="hero-sub">× Delta Kilo Soluciones</p>
-    <p class="hero-tag">Convertimos tu estilo en ventas constantes ♥</p>
+    <p class="hero-tag">Convertimos tu estilo en ventas constantes todos los días</p>
   </div>
 
   <div class="scroll-cue" aria-hidden="true">
@@ -786,398 +883,500 @@ section{
   </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════════════════════════════════
      02 · LA MARCA
      ══════════════════════════════════════════════════════════════════════ -->
 <section id="marca">
   <div class="marca-left">
     <p class="section-tag reveal">02 — La Marca</p>
-    <h2 class="marca-h1 reveal delay-1">Amal Boutique<br>no vende ropa…</h2>
-    <h2 class="marca-h2 reveal delay-2">…vende momentos,<br>estilo y esencia.</h2>
+    <h2 class="marca-h1 reveal delay-1">Amal Boutique<br>no es solo una boutique.</h2>
+    <h2 class="marca-h2 reveal delay-2">Es estilo, presencia<br>y experiencia.</h2>
     <p class="marca-body reveal delay-3">
-      Una marca que ya tiene alma, identidad y clientes que la aman.
-      Lo único que falta es el sistema para convertir eso en ventas
-      constantes, predecibles y escalables.
+      Ya tienen lo más difícil: un producto atractivo, una identidad visual
+      definida y un mercado listo para comprar.
+    </p>
+    <div class="marca-checks reveal delay-4">
+      <div class="marca-check">
+        <div class="marca-check-dot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Producto atractivo y de calidad
+      </div>
+      <div class="marca-check">
+        <div class="marca-check-dot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Identidad visual definida
+      </div>
+      <div class="marca-check">
+        <div class="marca-check-dot">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        Mercado listo para comprar
+      </div>
+    </div>
+    <p class="marca-body reveal delay-5" style="margin-top:1.5rem;font-weight:500;color:var(--gold-dark)">
+      Ahora toca lo más importante: convertir eso en ventas constantes todos los días.
     </p>
   </div>
   <div class="marca-right">
-    <div class="heart-pulse reveal-scale delay-1" aria-hidden="true">♥</div>
-    <p class="marca-quote reveal delay-2">
-      "Elegancia que te acompaña siempre.<br>
-      Moda que inspira, para mujeres que brillan."
-    </p>
+    <img src="images/post5.png" alt="Amal Boutique — moda elegante para mujer" loading="lazy">
   </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════════════════════════════════
-     03 · EL PROBLEMA
+     03 · OBJETIVO + SITUACIÓN ACTUAL
      ══════════════════════════════════════════════════════════════════════ -->
-<section id="problema">
+<section id="objetivo">
   <div class="section-number" aria-hidden="true">03</div>
-  <div class="problema-header">
-    <p class="section-tag reveal">03 — Situación Actual</p>
-    <h2 class="h-title reveal delay-1">Hoy, estas ventas<br>se están <span class="gold">perdiendo.</span></h2>
-    <p class="h-subtitle reveal delay-2">Cada uno de estos puntos representa dinero que no está llegando.</p>
-  </div>
-  <div class="pain-list" id="pain-list">
-    <div class="pain-item" data-delay="0">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </div>
-      <p class="pain-text">Falta de seguimiento — clientes interesados que no regresan</p>
+  <p class="section-tag reveal">03 — Objetivo &amp; Situación Actual</p>
+  <div class="obj-grid">
+    <div>
+      <h2 class="h-title reveal delay-1">
+        El objetivo es claro:<br><span class="gold">un sistema que vende.</span>
+      </h2>
+      <ul class="obj-bullets">
+        <li class="obj-bullet reveal delay-2">
+          <span class="obj-bullet-num">1</span>
+          Atraer más clientas todos los días
+        </li>
+        <li class="obj-bullet reveal delay-3">
+          <span class="obj-bullet-num">2</span>
+          Atender automáticamente sin depender del celular
+        </li>
+        <li class="obj-bullet reveal delay-4">
+          <span class="obj-bullet-num">3</span>
+          Dar seguimiento a cada persona interesada
+        </li>
+        <li class="obj-bullet reveal delay-5">
+          <span class="obj-bullet-num">4</span>
+          Convertir más mensajes en ventas reales
+        </li>
+      </ul>
     </div>
-    <div class="pain-item" data-delay="150">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <div>
+      <h2 class="h-title reveal delay-1" style="color:rgba(255,255,255,.7)">
+        Hoy, estas ventas<br><span class="gold">se están perdiendo.</span>
+      </h2>
+      <p class="h-subtitle reveal delay-2">Cada punto es dinero que no está llegando.</p>
+      <div class="pain-list" id="pain-list" style="margin-top:1.5rem">
+        <div class="pain-item" data-delay="0">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="pain-text">Publican… pero no siempre venden</p>
+        </div>
+        <div class="pain-item" data-delay="150">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="pain-text">Reciben mensajes… pero no todos compran</p>
+        </div>
+        <div class="pain-item" data-delay="300">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="pain-text">Se pierden clientes por no responder a tiempo</p>
+        </div>
+        <div class="pain-item" data-delay="450">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="pain-text">No hay seguimiento a clientes interesados</p>
+        </div>
+        <div class="pain-item" data-delay="600">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <p class="pain-text">No hay base de datos de clientes activa</p>
+        </div>
       </div>
-      <p class="pain-text">Dependencia de redes sin estrategia — presencia sin conversión</p>
-    </div>
-    <div class="pain-item" data-delay="300">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <div class="resultado-box reveal delay-8">
+        Resultado: ventas variables e inestables.
       </div>
-      <p class="pain-text">Respuestas tardías en WhatsApp — ventas que se van con la competencia</p>
-    </div>
-    <div class="pain-item" data-delay="450">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </div>
-      <p class="pain-text">Sin tienda en línea — clientes que quieren comprar y no pueden</p>
-    </div>
-    <div class="pain-item" data-delay="600">
-      <div class="pain-icon">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </div>
-      <p class="pain-text">Clientes existentes no reactivados — la mina de oro que nadie está trabajando</p>
     </div>
   </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════════════════════════════════
-     04 · LA OPORTUNIDAD
+     04 · LA TRANSFORMACIÓN
      ══════════════════════════════════════════════════════════════════════ -->
-<section id="oportunidad">
+<section id="transformacion">
   <div class="section-number" style="color:rgba(61,43,31,.06)" aria-hidden="true">04</div>
-  <p class="section-tag reveal">04 — La Oportunidad</p>
-  <div class="opor-grid">
+  <p class="section-tag reveal">04 — La Transformación</p>
+  <div class="transform-grid">
     <div>
       <h2 class="h-title reveal delay-1" style="color:var(--dark)">
-        Amal tiene todo<br>para <span style="color:var(--gold-dark)">crecer.</span>
+        Vamos a convertir Amal<br>en un negocio con<br>
+        <span style="color:var(--gold-dark)">ventas todos los días.</span>
       </h2>
       <div class="check-list">
         <div class="check-item reveal delay-2">
           <div class="check-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <span class="check-text">Producto atractivo y de calidad comprobada</span>
+          <span class="check-text">Sistema de ventas automatizado</span>
         </div>
         <div class="check-item reveal delay-3">
           <div class="check-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <span class="check-text">Imagen de marca definida y aspiracional</span>
+          <span class="check-text">Atención al cliente 24 / 7</span>
         </div>
         <div class="check-item reveal delay-4">
           <div class="check-icon">
             <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <span class="check-text">Ubicación y presencia física en Tepic Centro</span>
+          <span class="check-text">Clientes registrados y con seguimiento</span>
+        </div>
+        <div class="check-item reveal delay-5">
+          <div class="check-icon">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <span class="check-text">Flujo constante de ventas cada mes</span>
         </div>
       </div>
     </div>
-    <div class="opor-right">
-      <p class="opor-big reveal delay-2">
-        Solo falta convertir eso en un<br>
-        <span class="opor-accent">sistema de ventas</span><br>
-        constante.
+    <div class="transform-right reveal-right delay-2">
+      <p class="transform-big">
+        La diferencia entre una boutique y un
+        <span>negocio digital</span>
+        es el sistema detrás.
       </p>
-      <div class="opor-pill reveal delay-4">
-        "La diferencia entre una tienda y un negocio
-        digital es el sistema detrás."
+      <div class="transform-pill">
+        Hemos dividido el crecimiento en<br>
+        <strong>3 módulos clave.</strong>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════════════════════════════════
-     05 · EL SISTEMA
+     05 · MÓDULO 1 — SISTEMA OPERATIVO DE VENTAS
      ══════════════════════════════════════════════════════════════════════ -->
-<section id="sistema">
-  <div class="sistema-intro">
-    <p class="section-tag reveal" style="color:rgba(201,168,76,.7)">05 — La Solución</p>
-    <h2 class="h-title reveal delay-1">Un sistema completo<br>que <span class="gold">vende por ti.</span></h2>
-    <p class="h-subtitle reveal delay-2">Cuatro pilares integrados que trabajan los 365 días del año.</p>
+<section id="modulo1" class="module-section">
+  <div class="module-left">
+    <p class="module-num reveal">Módulo 01 — Sistema Operativo</p>
+    <h2 class="module-title reveal delay-1">El corazón operativo<br>de Amal.</h2>
+    <p class="module-subtitle reveal delay-2">La infraestructura para que el negocio funcione todos los días.</p>
+    <div class="module-price reveal delay-3">
+      <span class="amount">$3,000</span>
+      <span class="period">MXN / mes</span>
+    </div>
+    <ul class="module-includes reveal delay-3">
+      <li>CRM — todos tus clientes en un solo lugar</li>
+      <li>Automatizaciones básicas de seguimiento</li>
+      <li>Agenda y gestión de contactos</li>
+      <li>Plataforma centralizada: WhatsApp, Facebook, Instagram</li>
+      <li>Planeación y creación de contenido mensual</li>
+      <li>Tienda en línea activa 24/7</li>
+    </ul>
+    <p class="module-resultado reveal delay-4">
+      Tu negocio organizado, profesional y funcionando todos los días.
+    </p>
   </div>
-  <div class="cards-grid">
-    <div class="sys-card reveal delay-1">
-      <div class="card-num">01</div>
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      </div>
-      <h3 class="card-title">Presencia Digital</h3>
-      <p class="card-desc">Tienda online, perfil de Google y redes sociales trabajando en sinergia para atraer y convertir.</p>
-      <div class="card-tags">
-        <span class="tag">Web</span><span class="tag">Google</span><span class="tag">Redes</span>
-      </div>
+  <div class="module-right">
+    <img src="images/tienda-online.png" alt="Tienda en línea Amal Boutique" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     06 · MÓDULO 2 — ASISTENTE INTELIGENTE 24/7
+     ══════════════════════════════════════════════════════════════════════ -->
+<section id="modulo2" class="module-section">
+  <div class="module-left">
+    <p class="module-num reveal">Módulo 02 — Asistente IA</p>
+    <h2 class="module-title reveal delay-1">Atención implacable<br>24 horas, 7 días.</h2>
+    <p class="module-subtitle reveal delay-2">Nunca vuelvas a perder una venta por no contestar.</p>
+    <div class="module-price reveal delay-3">
+      <span class="amount">$2,000</span>
+      <span class="period">MXN / mes</span>
     </div>
-    <div class="sys-card reveal delay-2">
-      <div class="card-num">02</div>
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-      </div>
-      <h3 class="card-title">Captación de Clientes</h3>
-      <p class="card-desc">Estrategia en Meta Ads y contenido orgánico que convierte seguidores en compradoras reales.</p>
-      <div class="card-tags">
-        <span class="tag">Meta Ads</span><span class="tag">Contenido</span>
-      </div>
+    <ul class="module-includes reveal delay-3">
+      <li>Conexión directa con WhatsApp Business</li>
+      <li>IA respondiendo automáticamente las 24 horas</li>
+      <li>Atención en WhatsApp, Facebook e Instagram</li>
+      <li>Respuesta inmediata a consultas de productos, tallas y precios</li>
+    </ul>
+    <p class="module-resultado reveal delay-4">
+      Nunca perder una venta por no contestar a tiempo.
+    </p>
+  </div>
+  <div class="module-right">
+    <img src="images/post3.png" alt="Asistente IA para Amal Boutique" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     07 · MÓDULO 3 — CRECIMIENTO CON PUBLICIDAD
+     ══════════════════════════════════════════════════════════════════════ -->
+<section id="modulo3" class="module-section">
+  <div class="module-left">
+    <p class="module-num reveal">Módulo 03 — Crecimiento con Publicidad</p>
+    <h2 class="module-title reveal delay-1">Flujo constante<br>de clientas nuevas.</h2>
+    <p class="module-subtitle reveal delay-2">Inyectamos tráfico calificado a tu sistema de ventas.</p>
+    <div class="module-price reveal delay-3">
+      <span class="amount">$2,500</span>
+      <span class="period">MXN / mes + pauta</span>
     </div>
-    <div class="sys-card reveal delay-3">
-      <div class="card-num">03</div>
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      </div>
-      <h3 class="card-title">Automatización IA</h3>
-      <p class="card-desc">Asistente inteligente que atiende, responde y cierra ventas en WhatsApp, Facebook e Instagram 24/7.</p>
-      <div class="card-tags">
-        <span class="tag">WhatsApp</span><span class="tag">IA</span><span class="tag">24/7</span>
-      </div>
+    <ul class="module-includes reveal delay-3">
+      <li>Creación de campañas en Meta (Facebook e Instagram)</li>
+      <li>Segmentación estratégica por zona y perfil de cliente</li>
+      <li>Optimización constante de anuncios</li>
+      <li>Generación de clientes potenciales calificados</li>
+    </ul>
+    <p class="module-resultado reveal delay-4">
+      Flujo constante de nuevas clientas todos los días.
+    </p>
+    <p class="module-extra reveal delay-5">
+      Inversión en pauta recomendada: $3,000 – $6,000 MXN mensuales adicionales
+    </p>
+  </div>
+  <div class="module-right">
+    <img src="images/post6.png" alt="Campañas publicitarias Amal Boutique" loading="lazy">
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════════════════
+     08 · INVERSIÓN
+     ══════════════════════════════════════════════════════════════════════ -->
+<section id="inversion">
+  <p class="inversion-eyebrow reveal">08 — Inversión</p>
+  <h2 class="inversion-title reveal delay-1">
+    Una inversión que<br><em>se paga sola.</em>
+  </h2>
+  <p class="inversion-sub reveal delay-2">Tres módulos integrados. Un sistema completo.</p>
+
+  <div class="inv-layout reveal delay-3">
+    <!-- Price table -->
+    <div>
+      <table class="price-table" role="table" aria-label="Resumen de inversión">
+        <thead>
+          <tr class="price-table-header">
+            <td>Concepto</td>
+            <td style="text-align:right">Costo mensual</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="concept">Sistema + Contenido + Tienda</td>
+            <td class="amount-cell">$3,000 MXN</td>
+          </tr>
+          <tr>
+            <td class="concept">Asistente IA 24/7</td>
+            <td class="amount-cell">$2,000 MXN</td>
+          </tr>
+          <tr>
+            <td class="concept">Manejo de Campañas (Meta Ads)</td>
+            <td class="amount-cell">$2,500 MXN</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td class="total-label">Total mensual</td>
+            <td class="total-amount">$7,500 MXN</td>
+          </tr>
+        </tfoot>
+      </table>
+      <p class="price-note">* No incluye la inversión directa en publicidad — se cotiza aparte.</p>
+      <a href="https://wa.me/523111141193?text=Hola%2C%20me%20interesa%20la%20propuesta%20para%20Amal%20Boutique." class="cta-btn" target="_blank" rel="noopener" style="margin-top:1.5rem">
+        Hablemos ahora
+        <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
     </div>
-    <div class="sys-card reveal delay-4">
-      <div class="card-num">04</div>
-      <div class="card-icon">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-      </div>
-      <h3 class="card-title">Seguimiento CRM</h3>
-      <p class="card-desc">Sistema de gestión que registra, segmenta y reactiva clientes automáticamente. Ninguna venta se pierde.</p>
-      <div class="card-tags">
-        <span class="tag">CRM</span><span class="tag">Retención</span>
+
+    <!-- Oferta especial -->
+    <div class="oferta-box">
+      <p class="oferta-title">Oferta especial de arranque</p>
+      <p style="font-size:.8rem;font-weight:300;color:rgba(255,255,255,.45);margin-bottom:1rem;line-height:1.6">
+        Esquema progresivo para facilitar el crecimiento:
+      </p>
+      <div class="oferta-steps">
+        <div class="oferta-step">
+          <span class="step-dot dot-green"></span>
+          <div>
+            <span class="step-mes">Mes 1 — Implementación</span>
+            <span class="step-desc">Solo pagas el setup. Construimos todo el sistema desde cero.</span>
+          </div>
+        </div>
+        <div class="oferta-step">
+          <span class="step-dot dot-blue"></span>
+          <div>
+            <span class="step-mes">Mes 2 — Activación · $3,000</span>
+            <span class="step-desc">Sistema + contenido funcionando al 100%.</span>
+          </div>
+        </div>
+        <div class="oferta-step">
+          <span class="step-dot dot-purple"></span>
+          <div>
+            <span class="step-mes">Mes 3 — Automatización · $5,000</span>
+            <span class="step-desc">Sistema + Asistente IA activo.</span>
+          </div>
+        </div>
+        <div class="oferta-step">
+          <span class="step-dot dot-orange"></span>
+          <div>
+            <span class="step-mes">Mes 4 — Escalamiento</span>
+            <span class="step-desc">Sistema + IA (sin manejo de campañas). Empezamos a generar clientes.</span>
+          </div>
+        </div>
+        <div class="oferta-step">
+          <span class="step-dot dot-red"></span>
+          <div>
+            <span class="step-mes">Mes 5 en adelante · $7,500 + pauta</span>
+            <span class="step-desc">Sistema completo operando al 100%.</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════
-     06 · MÓDULOS
-     ══════════════════════════════════════════════════════════════════════ -->
-<section id="modulos">
-  <div class="modulos-intro">
-    <p class="section-tag reveal text-center">06 — Módulos del Sistema</p>
-    <h2 class="h-title reveal delay-1 text-center">Cada pieza del<br><span class="gold">ecosistema digital.</span></h2>
-  </div>
-  <div class="timeline" id="timeline">
-    <div class="tl-item reveal delay-1">
-      <div class="tl-dot-wrap">
-        <div class="tl-dot">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-      </div>
-      <div class="tl-content">
-        <h3 class="tl-title">Tienda en Línea</h3>
-        <p class="tl-desc">Catálogo digital disponible 24/7. Diseño elegante, integración de pagos y conexión directa a WhatsApp. Tus clientes compran desde su celular, en cualquier momento.</p>
-        <span class="tl-badge">E-commerce</span>
-      </div>
-    </div>
-    <div class="tl-item reveal delay-2">
-      <div class="tl-dot-wrap">
-        <div class="tl-dot">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-      </div>
-      <div class="tl-content">
-        <h3 class="tl-title">Asistente IA</h3>
-        <p class="tl-desc">Responde automáticamente en WhatsApp, Facebook e Instagram. Atiende consultas, envía información de productos y agenda citas — mientras tú descansas.</p>
-        <span class="tl-badge">Inteligencia Artificial</span>
-      </div>
-    </div>
-    <div class="tl-item reveal delay-3">
-      <div class="tl-dot-wrap">
-        <div class="tl-dot">
-          <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-        </div>
-      </div>
-      <div class="tl-content">
-        <h3 class="tl-title">Gestión de Redes Sociales</h3>
-        <p class="tl-desc">Contenido elegante y estratégico: reels, posts y stories que refuerzan la identidad de Amal y convierten seguidores en compradoras. Calendario editorial mensual.</p>
-        <span class="tl-badge">Social Media</span>
-      </div>
-    </div>
-    <div class="tl-item reveal delay-4">
-      <div class="tl-dot-wrap">
-        <div class="tl-dot">
-          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        </div>
-      </div>
-      <div class="tl-content">
-        <h3 class="tl-title">Google Maps & Reseñas</h3>
-        <p class="tl-desc">Perfil de Google optimizado, solicitud automática de reseñas post-compra y estrategia de posicionamiento local. Aparece primero cuando busquen moda en Tepic.</p>
-        <span class="tl-badge">SEO Local</span>
-      </div>
-    </div>
-    <div class="tl-item reveal delay-5">
-      <div class="tl-dot-wrap">
-        <div class="tl-dot">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-      </div>
-      <div class="tl-content">
-        <h3 class="tl-title">CRM & Seguimiento</h3>
-        <p class="tl-desc">Cada cliente registrada, segmentada y con seguimiento automático. Mensajes de reactivación, recordatorios y ofertas personalizadas. Ninguna venta se pierde.</p>
-        <span class="tl-badge">CRM</span>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     07 · CÓMO FUNCIONA
+     09 · PROYECCIÓN DE RESULTADOS
      ══════════════════════════════════════════════════════════════════════ -->
-<section id="flujo">
-  <div class="flujo-intro">
-    <p class="section-tag reveal">07 — Cómo Funciona</p>
-    <h2 class="h-title reveal delay-1" style="color:var(--dark)">
-      Del primer contacto<br>al <span style="color:var(--gold-dark)">cierre de venta.</span>
-    </h2>
-    <p class="h-subtitle reveal delay-2" style="color:rgba(61,43,31,.5)">Un flujo automatizado que funciona sin intervención manual.</p>
-  </div>
-  <div class="steps-wrap" id="steps-wrap">
-    <div class="step-item reveal delay-1" data-step="0">
-      <div class="step-num">01</div>
-      <p class="step-label">Cliente ve<br>el anuncio</p>
-      <p class="step-sub">Meta Ads /<br>Google / Orgánico</p>
-    </div>
-    <div class="step-item reveal delay-2" data-step="1">
-      <div class="step-num">02</div>
-      <p class="step-label">Escribe por<br>WhatsApp</p>
-      <p class="step-sub">Botón directo<br>en tienda web</p>
-    </div>
-    <div class="step-item reveal delay-3" data-step="2">
-      <div class="step-num">03</div>
-      <p class="step-label">IA responde<br>al instante</p>
-      <p class="step-sub">Catálogo, tallas<br>y precios</p>
-    </div>
-    <div class="step-item reveal delay-4" data-step="3">
-      <div class="step-num">04</div>
-      <p class="step-label">Se guarda<br>en el CRM</p>
-      <p class="step-sub">Perfil de cliente<br>automático</p>
-    </div>
-    <div class="step-item reveal delay-5" data-step="4">
-      <div class="step-num">05</div>
-      <p class="step-label">Seguimiento<br>automático</p>
-      <p class="step-sub">Recordatorio<br>y oferta</p>
-    </div>
-    <div class="step-item reveal delay-6" data-step="5">
-      <div class="step-num">06</div>
-      <p class="step-label">¡Compra<br>realizada!</p>
-      <p class="step-sub">Ciclo se<br>repite solo</p>
-    </div>
-  </div>
-  <p class="flujo-cta reveal delay-7">
-    De la atención al cierre: todo automatizado,<br>todo organizado, todo sin esfuerzo manual.
+<section id="proyeccion">
+  <div class="section-number" style="color:rgba(201,168,76,.05)" aria-hidden="true">09</div>
+  <p class="section-tag reveal text-center">09 — Proyección de Resultados</p>
+  <h2 class="h-title reveal delay-1 text-center">El sistema se <span class="gold">paga solo.</span></h2>
+  <p class="h-subtitle reveal delay-2 text-center" style="color:rgba(245,239,230,.45)">
+    Con mismo producto, mejor atención y seguimiento automático:
   </p>
+
+  <div class="proyeccion-grid">
+    <div class="proyeccion-card before reveal-left delay-2">
+      <p class="proy-label">Hoy</p>
+      <p class="proy-amount">$36,000</p>
+      <p class="proy-detail">
+        10 personas preguntan<br>
+        2 compran · ticket $600<br>
+        ≈ $36,000 / mes
+      </p>
+    </div>
+    <div class="proy-arrow reveal delay-3">→</div>
+    <div class="proyeccion-card after reveal-right delay-2">
+      <p class="proy-label">Con el Sistema</p>
+      <p class="proy-amount">$54k – $72k</p>
+      <p class="proy-detail">
+        Mejor atención · seguimiento auto<br>
+        3–4 compras por cada 10 personas<br>
+        ≈ $54,000 – $72,000 / mes
+      </p>
+    </div>
+  </div>
+
+  <div class="proyeccion-diff reveal delay-4">
+    Incremento estimado: +$18,000 a +$36,000 mensuales
+  </div>
+
+  <div class="proyeccion-meaning reveal delay-5">
+    <div class="meaning-item">
+      <div class="meaning-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span class="meaning-text">El sistema se paga solo — cada clienta nueva es ganancia</span>
+    </div>
+    <div class="meaning-item">
+      <div class="meaning-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span class="meaning-text">Dejas de depender del esfuerzo manual del día a día</span>
+    </div>
+    <div class="meaning-item">
+      <div class="meaning-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <span class="meaning-text">Empiezas a escalar en serio, sin contratar más personal</span>
+    </div>
+  </div>
 </section>
 
+
 <!-- ══════════════════════════════════════════════════════════════════════
-     08 · PLAN
+     10 · PLAN DE IMPLEMENTACIÓN
      ══════════════════════════════════════════════════════════════════════ -->
 <section id="plan">
-  <div>
-    <p class="section-tag reveal" style="color:rgba(201,168,76,.7)">08 — Plan de Implementación</p>
-    <h2 class="h-title reveal delay-1">De cero a funcionando<br><span class="gold">en 4 semanas.</span></h2>
-    <p class="h-subtitle reveal delay-2" style="color:rgba(245,239,230,.4)">Un plan claro, sin sorpresas.</p>
-  </div>
+  <div class="section-number" aria-hidden="true">10</div>
+  <p class="section-tag reveal" style="color:rgba(201,168,76,.7)">10 — Plan de Implementación</p>
+  <h2 class="h-title reveal delay-1">De cero a funcionando<br><span class="gold">en 4 semanas.</span></h2>
+  <p class="h-subtitle reveal delay-2" style="color:rgba(255,255,255,.4)">Un plan claro, sin sorpresas.</p>
   <div class="plan-grid">
     <div class="phase-card phase-1 reveal delay-2">
       <p class="phase-label">Fase 01</p>
       <p class="phase-period">Semana 1 – 2<br>Setup del Sistema</p>
       <ul class="phase-items">
+        <li>Setup completo del sistema operativo</li>
         <li>Tienda en línea configurada</li>
-        <li>Asistente IA conectado</li>
-        <li>CRM activo y funcionando</li>
-        <li>Integraciones y pagos</li>
+        <li>CRM activo con contactos importados</li>
+        <li>Asistente IA conectado y entrenado</li>
       </ul>
     </div>
     <div class="phase-card phase-2 reveal delay-3">
       <p class="phase-label">Fase 02</p>
-      <p class="phase-period">Semana 3 – 4<br>Contenido & Campañas</p>
+      <p class="phase-period">Semana 3 – 4<br>Activación y Flujo</p>
       <ul class="phase-items">
-        <li>Primeras publicaciones</li>
+        <li>Activación de contenido y calendario editorial</li>
         <li>Anuncios Meta Ads activos</li>
         <li>Perfil Google optimizado</li>
-        <li>Calendario editorial listo</li>
+        <li>Automatizaciones de seguimiento encendidas</li>
       </ul>
     </div>
     <div class="phase-card phase-3 reveal delay-4">
       <p class="phase-label">Fase 03</p>
-      <p class="phase-period">Mes 2 en adelante<br>Optimización & Escala</p>
+      <p class="phase-period">Mes 2 en adelante<br>Optimización y Escala</p>
       <ul class="phase-items">
-        <li>Análisis de resultados</li>
-        <li>Ajuste de campañas</li>
-        <li>Escalar lo que funciona</li>
-        <li>Crecimiento continuo</li>
+        <li>Análisis de resultados mensuales</li>
+        <li>Ajuste de campañas según datos</li>
+        <li>Escalamiento de lo que funciona</li>
+        <li>Crecimiento constante y predecible</li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════════════════════════════════
-     09 · INVERSIÓN
-     ══════════════════════════════════════════════════════════════════════ -->
-<section id="inversion">
-  <p class="inversion-eyebrow reveal">09 — Inversión</p>
-  <h2 class="inversion-title reveal delay-1">
-    Una inversión que<br><em>se paga sola.</em>
-  </h2>
-  <p class="inversion-sub reveal delay-2">
-    Planes adaptados al crecimiento de Amal Boutique
-  </p>
-  <div class="price-card reveal-scale delay-3">
-    <p class="price-label">Plan Integral Delta Kilo</p>
-    <p class="price-main">
-      Sistema completo de<br>ventas digitales
-    </p>
-    <p class="price-detail">
-      Tienda online · Asistente IA · Gestión de redes<br>
-      Google Maps · CRM · Campañas Meta Ads<br><br>
-      Diseñado para que cada peso invertido regrese multiplicado.
-    </p>
-    <a href="https://wa.me/523111141193?text=Hola%2C%20me%20interesa%20la%20propuesta%20para%20Amal%20Boutique." class="cta-btn" target="_blank" rel="noopener">
-      Hablemos ahora
-      <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-    </a>
-  </div>
-  <p class="inversion-note reveal delay-5">* Inversión en publicidad (Meta Ads) no incluida — se cotiza por separado según objetivos.</p>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════════════════
-     10 · CIERRE
+     11 · CIERRE
      ══════════════════════════════════════════════════════════════════════ -->
 <section id="cierre">
   <div class="cierre-bg"></div>
+  <div class="cierre-img-bg" aria-hidden="true"></div>
   <canvas id="cierre-canvas" aria-hidden="true"></canvas>
+
+  <div class="cierre-checks reveal delay-1">
+    <span class="cierre-check-badge">&#10003; Estilo</span>
+    <span class="cierre-check-badge">&#10003; Producto</span>
+    <span class="cierre-check-badge">&#10003; Presencia</span>
+  </div>
 
   <h2 class="cierre-line1 reveal" style="position:relative;z-index:1">
     Amal ya tiene el estilo.
   </h2>
-  <div class="cierre-divider reveal delay-1"></div>
-  <p class="cierre-line2 reveal delay-2">
+  <div class="cierre-divider reveal delay-2"></div>
+  <p class="cierre-line2 reveal delay-3">
     Nosotros creamos el sistema<br>para venderlo.
   </p>
+  <p class="cierre-promise reveal delay-4">
+    ventas constantes todos los días
+  </p>
 
-  <a href="https://preview-1776394508852532776.vibepreview.com/" target="_blank" rel="noopener"
-     class="reveal delay-3"
-     style="display:inline-flex;align-items:center;gap:.7rem;margin-top:2.5rem;
-            background:var(--gold);color:var(--dark);
-            font-family:var(--font-sans);font-size:.78rem;font-weight:700;
-            letter-spacing:.18em;text-transform:uppercase;
-            padding:1rem 2.4rem;border-radius:2px;text-decoration:none;
-            position:relative;z-index:1;
-            box-shadow:0 6px 30px rgba(201,168,76,.4);
-            transition:background .25s,transform .2s,box-shadow .25s;">
-    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:currentColor;stroke-width:2.5;fill:none" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-    Visitar la Tienda en Línea
+  <a href="https://wa.me/523111141193?text=Hola%2C%20me%20interesa%20la%20propuesta%20para%20Amal%20Boutique."
+     target="_blank" rel="noopener"
+     class="cta-btn reveal delay-4"
+     style="margin-top:2.5rem;position:relative;z-index:1">
+    Hablemos ahora
+    <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
   </a>
 
-  <div class="cierre-contact reveal delay-4">
+  <div class="cierre-contact reveal delay-5">
     <p class="cierre-contact-title">Contáctanos</p>
     <div class="contact-row">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.56a16 16 0 0 0 6 6l.95-.87a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg>
@@ -1193,11 +1392,12 @@ section{
     </div>
   </div>
 
-  <div class="reveal delay-5" style="position:relative;z-index:1">
+  <div class="reveal delay-6" style="position:relative;z-index:1">
     <p class="cierre-logo">Delta Kilo <span>Soluciones</span></p>
     <p class="cierre-tagline">Estrategia · Tecnología · Resultados</p>
   </div>
 </section>
+
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1208,7 +1408,6 @@ function initParticles(canvasId) {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let particles = [];
-  let raf;
 
   function resize() {
     canvas.width  = canvas.offsetWidth;
@@ -1244,7 +1443,7 @@ function initParticles(canvasId) {
       ctx.fillStyle = `rgba(${GOLD[0]},${GOLD[1]},${GOLD[2]},${alpha})`;
       ctx.fill();
     });
-    raf = requestAnimationFrame(draw);
+    requestAnimationFrame(draw);
   }
   draw();
 }
@@ -1275,7 +1474,7 @@ const revealObs = new IntersectionObserver((entries) => {
       revealObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.15 });
+}, { threshold: 0.12 });
 
 document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale')
   .forEach(el => revealObs.observe(el));
@@ -1287,7 +1486,7 @@ const painObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     const items = document.querySelectorAll('.pain-item');
-    items.forEach((item, i) => {
+    items.forEach((item) => {
       const d = parseInt(item.dataset.delay || 0);
       setTimeout(() => {
         item.classList.add('visible');
@@ -1296,45 +1495,10 @@ const painObs = new IntersectionObserver((entries) => {
     });
     painObs.unobserve(e.target);
   });
-}, { threshold: 0.3 });
+}, { threshold: 0.2 });
 
 const painList = document.getElementById('pain-list');
 if (painList) painObs.observe(painList);
-
-/* ═══════════════════════════════════════════════════════════════════════
-   TIMELINE line reveal
-   ═══════════════════════════════════════════════════════════════════════ */
-const tlObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      tlObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.1 });
-
-const timeline = document.getElementById('timeline');
-if (timeline) tlObs.observe(timeline);
-
-/* ═══════════════════════════════════════════════════════════════════════
-   STEPS — sequential highlight on scroll
-   ═══════════════════════════════════════════════════════════════════════ */
-const stepsObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const steps = document.querySelectorAll('.step-item');
-    steps.forEach((step, i) => {
-      setTimeout(() => {
-        step.classList.add('lit');
-        if (i < steps.length - 1) step.classList.add('connected');
-      }, i * 300);
-    });
-    stepsObs.unobserve(e.target);
-  });
-}, { threshold: 0.4 });
-
-const stepsWrap = document.getElementById('steps-wrap');
-if (stepsWrap) stepsObs.observe(stepsWrap);
 
 /* ═══════════════════════════════════════════════════════════════════════
    PROGRESS BAR
@@ -1349,7 +1513,11 @@ window.addEventListener('scroll', () => {
 /* ═══════════════════════════════════════════════════════════════════════
    NAV DOTS — active section tracking
    ═══════════════════════════════════════════════════════════════════════ */
-const sections = ['hero','marca','problema','oportunidad','sistema','modulos','flujo','plan','inversion','cierre'];
+const sections = [
+  'hero','marca','objetivo','transformacion',
+  'modulo1','modulo2','modulo3',
+  'inversion','proyeccion','plan','cierre'
+];
 const dots = document.querySelectorAll('.dot');
 
 dots.forEach(dot => {
@@ -1376,18 +1544,6 @@ const navObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 
 sectionEls.forEach(el => { if (el) navObs.observe(el); });
-
-/* ═══════════════════════════════════════════════════════════════════════
-   TL ITEM dot highlight on scroll
-   ═══════════════════════════════════════════════════════════════════════ */
-const tlItemObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('visible');
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.tl-item').forEach(item => tlItemObs.observe(item));
 </script>
 </body>
 </html>
-
